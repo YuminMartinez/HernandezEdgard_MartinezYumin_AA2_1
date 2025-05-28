@@ -5,8 +5,8 @@
 
 void Game::PlayerInPut()
 {
-    int x = m_player.m_PosX;
-    int y = m_player.m_PosY;
+    int x = m_player.getPosX();
+    int y = m_player.getPosY();
 
     // se mueve hacia delante
     if (GetAsyncKeyState(VK_LEFT) & 0x8000 && y > 0)
@@ -15,14 +15,14 @@ void Game::PlayerInPut()
         {
             m_map.m_Type[x][y] = objectType::DEFAULT;
             m_player.moveLeft(); 
-            m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_LEFT;
+            m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_LEFT;
         }
         else if (m_map.m_Type[x][y - 1] == objectType::MONEY)
         {
             m_map.m_Type[x][y] = objectType::DEFAULT;
             m_player.moveLeft(); 
-            m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_LEFT;
-            m_player.money += numRandom(1, m_map.getMaxMoneySantos());
+            m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_LEFT;
+            m_player.addMoney(m_player.getMoney() + numRandom(1, m_map.getMaxMoneySantos()));
             
 
         }
@@ -33,15 +33,15 @@ void Game::PlayerInPut()
         {
             m_map.m_Type[x][y] = objectType::DEFAULT;
             m_player.moveForward();
-            m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_UP;
+            m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_UP;
         }
         else if (m_map.m_Type[x - 1][y] == objectType::MONEY)
         {
             m_map.m_Type[x][y] = objectType::DEFAULT;
             m_player.moveForward();
             
-            m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_UP;
-            m_player.money += numRandom(1, m_map.getMaxMoneySantos());
+            m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_UP;
+            m_player.addMoney(m_player.getMoney() + numRandom(1, m_map.getMaxMoneySantos()));
         }
     }// se mueve hacia atras
     else if (GetAsyncKeyState(VK_RIGHT) & 0x8000 && x < m_map.getFilas() - 1)
@@ -50,15 +50,15 @@ void Game::PlayerInPut()
         {
             m_map.m_Type[x][y] = objectType::DEFAULT;
             m_player.moveRight();
-            m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_RIGHT;
+            m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_RIGHT;
            
         }
         else if (m_map.m_Type[x][y + 1] == objectType::MONEY)
         {
             m_map.m_Type[x][y] = objectType::DEFAULT;
             m_player.moveRight();
-            m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_RIGHT;
-            m_player.money += numRandom(1, m_map.getMaxMoneySantos());
+            m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_RIGHT;
+            m_player.addMoney(m_player.getMoney() + numRandom(1, m_map.getMaxMoneySantos()));
 
         }
     }// se mueve hacia derecha
@@ -68,22 +68,22 @@ void Game::PlayerInPut()
         {
             m_map.m_Type[x][y] = objectType::DEFAULT;
             m_player.moveBack();
-            m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_DOWN;
+            m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_DOWN;
           
         }
         else if (m_map.m_Type[x + 1][y] == objectType::MONEY)
         {
             m_map.m_Type[x][y] = objectType::DEFAULT;
             m_player.moveBack();
-            m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_DOWN;
-            m_player.money += numRandom(1, m_map.getMaxMoneySantos());
+            m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_DOWN;
+            m_player.addMoney(m_player.getMoney() + numRandom(1, m_map.getMaxMoneySantos()));
         }
 
     }
     else
     {
-        m_player.m_PosX = x;
-        m_player.m_PosY = y;
+        m_player.SetPosX(x);
+        m_player.setPosY(y);
     }
     
     if (GetAsyncKeyState(VK_SPACE) & 0x8000) 
@@ -119,8 +119,8 @@ void Game::printMap() const
 {
     
     /// calcular la posición de inicio para la vista
-    int startFila = m_player.m_PosX - m_player.playerView_Heigh / 2;  // Filas (Y)
-    int startCol = m_player.m_PosY - m_player.playerView_Width / 2;   // Columnas (X)
+    int startFila = m_player.getPosX() - m_player.getPlayerViewHeight()/ 2;  // Filas (Y)
+    int startCol = m_player.getPosY() - m_player.getPlayerViewWidth() / 2;   // Columnas (X)
 
     // Corregir los límites: asegurarnos de que la vista no se sale del mapa
     if (startFila < 0)
@@ -133,20 +133,20 @@ void Game::printMap() const
     }
 
     // Asegurarnos de que la vista no se salga del mapa
-    if (startFila + m_player.playerView_Heigh > m_map.getFilas())
+    if (startFila + m_player.getPlayerViewHeight() > m_map.getFilas())
     {
-        startFila = m_map.getFilas() - m_player.playerView_Heigh;
+        startFila = m_map.getFilas() - m_player.getPlayerViewHeight();
     }
 
-    if (startCol + m_player.playerView_Width > m_map.getColumnas())
+    if (startCol + m_player.getPlayerViewWidth() > m_map.getColumnas())
     {
-        startCol = m_map.getColumnas() - m_player.playerView_Width;
+        startCol = m_map.getColumnas() - m_player.getPlayerViewWidth();
     }
 
     // Dibujar el mapa centrado en el jugador
-    for (int fila = 0; fila < m_player.playerView_Heigh; ++fila)
+    for (int fila = 0; fila < m_player.getPlayerViewHeight(); ++fila)
     {
-        for (int col = 0; col < m_player.playerView_Width; ++col)
+        for (int col = 0; col < m_player.getPlayerViewWidth(); ++col)
         {
             int mapY = startFila + fila; // Fila real en el mapa
             int mapX = startCol + col;   // Columna real en el mapa
@@ -154,7 +154,7 @@ void Game::printMap() const
             if (mapY >= 0 && mapY < m_map.getFilas() && mapX >= 0 && mapX < m_map.getColumnas())
             {
                 // Marcar al jugador con un símbolo especial (@)
-                if (mapY == m_player.m_PosX && mapX == m_player.m_PosY)
+                if (mapY == m_player.getPosX() && mapX == m_player.getPosY())
                 {
                     switch (m_map.m_Type[mapY][mapX])
                     {
@@ -206,10 +206,10 @@ void Game::printMap() const
     }
 
     // Imprimir información de depuración
-    std::cout << "\nJugador: (" << m_player.m_PosX << ", " << m_player.m_PosY << ")";
-    std::cout << "\nVista: " << m_player.playerView_Width << "x" << m_player.playerView_Heigh;
+    std::cout << "\nJugador: (" << m_player.getPosX() << ", " << m_player.getPosY() << ")";
+    std::cout << "\nVista: " << m_player.getPlayerViewWidth() << "x" << m_player.getPlayerViewHeight();
     std::cout << "\nMapa: " << m_map.getColumnas() << "x" << m_map.getFilas();
-    std::cout << "\nDinero: " << m_player.money << "$";
+    std::cout << "\nDinero: " << m_player.getMoney() << "$";
 
     
     /*
@@ -235,10 +235,10 @@ void Game::printMap() const
 
 }
 
-void Game::setPlayer()
+void Game::setPlayer() 
 {
    
-    m_map.m_Type[m_player.m_PosX][m_player.m_PosY] = objectType::PLAYER_UP;
+    m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_UP;
 }
 void Game::CreateNPC()
 {
@@ -277,8 +277,8 @@ void Game::NPCMoviment()
                 for (int j = -1; j <= 1; j++)
                 {
                     int  t = 0;
-                    int checkPosX = m_player.m_PosX + i;
-                    int checkPosY = m_player.m_PosY + j;
+                    int checkPosX = m_player.getPosX() + i;
+                    int checkPosY = m_player.getPosY() + j;
                     while (t < m_map.getNPC()+ m_map.getNPCSanFierro())
                     {
                         if (m_NPC.npc_PosX[t] == checkPosX && m_NPC.npc_PosY[t] == checkPosY)

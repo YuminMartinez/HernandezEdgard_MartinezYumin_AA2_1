@@ -1,12 +1,13 @@
-#include "util.h"
+#include "Util.h"
 #include "Game.h"
+const int NUM_FPS = 100;
 
 int numRandom(int min, int max)
 {
 	return rand() % (max - min + 1) + min;
 }
 
-void limpiarPantalla() {
+void CleanScreen() {
 	system("cls");  
 
 }
@@ -18,17 +19,22 @@ int main()
 	game.m_map;
 	game.m_player;
 	game.m_NPC;
-	game.setPlayer();
 	game.CreateNPC();	
+
 	while (game.finish == false)
 	{
-		Sleep(100);
-		limpiarPantalla();
 		
-		
-		game.printMap();
-		game.NPCMoviment();
+		CleanScreen();
+		//INPUT
 		game.PlayerInPut();
+		
+		//UPDATE
+		game.NPCMoviment();
 
+		//RENDER
+		game.printMap();
+	
+		//FRAME CONTROL
+		Sleep(1000 / NUM_FPS);
 	}
 }

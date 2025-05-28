@@ -1,5 +1,5 @@
 #pragma once
-#include "util.h"
+#include "Util.h"
 class Player;
 enum class objectType
 {
@@ -26,6 +26,9 @@ private:
     int totalNpcSanFierro;
     int totalToLasVenturas;
     int maxMoneySanFierro;
+    int NumCarSantos;
+    int NumCarSanFierro;
+    int NumCarLasVenturas;
 
 public:
 

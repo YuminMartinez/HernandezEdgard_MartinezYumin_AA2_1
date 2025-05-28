@@ -1,21 +1,63 @@
 #pragma once
-#include "util.h"
+#include "Util.h"
 class Player
 {
-public:
+private:
 	int m_PosX;
 	int m_PosY;
 	int money = 0;
 	int playerView_Width = 11;
 	int playerView_Heigh = 11;
 
+	
+public:
+
 	Player();
+
+	// Getters
+	int getPosX() const 
+	{ 
+		return m_PosX; 
+	}
+	int getPosY() const 
+	{
+		return m_PosY;
+	}
+	int getMoney() const
+	{
+		return money; 
+	}
+	int getPlayerViewWidth() const
+	{ 
+		return playerView_Width; 
+	}
+	int getPlayerViewHeight() const
+	{
+		return  playerView_Heigh;
+	}
+
+	//Setterss
+	void addMoney(int amount) {
+		if (amount > 0)
+		{
+			money += amount;
+		}
+	}
+
+	void SetPosX(int positionX)
+	{
+		m_PosX = positionX;
+	}
+	void setPosY(int positionY)
+	{ 
+		m_PosY = positionY;
+	}
+
+
 	void moveForward();
 	void moveLeft();
 	void moveBack();
 	void moveRight();
-	
-	
 
-	//void playerMoviment();
+	
 };
