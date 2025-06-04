@@ -8,12 +8,12 @@ private:
 	int money = 0;
 	int playerView_Width = 11;
 	int playerView_Heigh = 11;
-
+	
 	
 public:
 
 	Player();
-
+	
 	// Getters
 	int getPosX() const 
 	{ 
@@ -43,7 +43,7 @@ public:
 			money += amount;
 		}
 	}
-
+	
 	void SetPosX(int positionX)
 	{
 		m_PosX = positionX;

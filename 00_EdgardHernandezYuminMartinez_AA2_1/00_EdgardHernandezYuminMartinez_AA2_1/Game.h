@@ -4,18 +4,22 @@
 #include "Player.h"
 #include "Map.h"
 #include "Car.h"
-
+#include "FileRead.h"
 class Game
 {
 
 private:
 	
 public:
+	FileRead m_fileRead;
 	Map m_map;
 	Player m_player;
 	NPC m_NPC;
 	Car m_car;
-
+	int menuOption = 0;
+	bool finish = false;
+	bool startGame = false;
+	bool IsDead = true;
 	Player getPlayer() 
 	{ 
 		return m_player;
@@ -28,8 +32,8 @@ public:
 	{
 		return m_NPC;
 	}
-
-	bool finish = false;
+	void PrintInit();
+	void Menu();
 	void PlayerInPut();
 	void setPlayer();
 	void printMap() const;

@@ -1,8 +1,46 @@
 #include "Game.h"
 #include <Windows.h> 
 
-
-
+void Game::PrintInit()
+{
+    std::cout << "|--------------------------------------------|" << std::endl;
+    std::cout << "|        GRAND THEFT AUTO: Enti city         |" << std::endl;
+    std::cout << "|--------------------------------------------|" << std::endl << std::endl;
+    std::cout << "                Loading game... " << std::endl;
+}
+void Game::Menu()
+{
+    if (!startGame)
+    {
+        if (GetAsyncKeyState(VK_UP))
+        {
+            menuOption = 0;
+        }
+        else if (GetAsyncKeyState(VK_DOWN))
+        {
+            menuOption = 1;
+        }
+        if (menuOption == 0)
+        {
+            std::cout << "1. Play <--" << std::endl;
+            std::cout << "2. Exit" << std::endl;
+        }
+        else if (menuOption == 1)
+        {
+            std::cout << "1. Play" << std::endl;
+            std::cout << "2. Exit <--" << std::endl;
+        }
+        if (GetAsyncKeyState(VK_SPACE) && menuOption == 0)
+        {
+            startGame = true;
+			IsDead = false;
+        }
+        else if (GetAsyncKeyState(VK_SPACE) && menuOption == 1)
+        {
+            finish = true;
+        }
+    }
+}
 void Game::PlayerInPut()
 {
     int x = m_player.getPosX();
