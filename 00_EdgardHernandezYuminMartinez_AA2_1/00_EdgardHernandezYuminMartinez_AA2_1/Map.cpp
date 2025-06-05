@@ -3,80 +3,44 @@
 #include "Game.h"
 #include "Map.h"
 
-Map::Map()
-{
-    std::ifstream myFile("config.txt");
-    if (!myFile.is_open()) 
-    {
-        std::cerr << "Error al abrir config.txt\n";
-
-    }
-
-    // Leer dimensiones
-    std::string line;
-    int lineNumber = 0;
-    while (std::getline(myFile, line)) 
-    {
-        std::stringstream ss(line);
-        std::string item;
-
-        switch (lineNumber) 
-        {
-        case 0:
-            if (std::getline(ss, item, ';')) filas = std::stoi(item);
-            if (std::getline(ss, item, ';')) columnas = std::stoi(item);
-            break;
-        case 1:
-            if (std::getline(ss, item, ';')) totalNpc = std::stoi(item);
-            if (std::getline(ss, item, ';')) totalToSanFierro = std::stoi(item);
-            if (std::getline(ss, item, ';')) maxMoneySantos = std::stoi(item);
-            break;
-        case 2:
-            if (std::getline(ss, item, ';')) totalNpcSanFierro = std::stoi(item);
-            if (std::getline(ss, item, ';')) totalToLasVenturas = std::stoi(item);
-            if (std::getline(ss, item, ';')) maxMoneySanFierro = std::stoi(item);
-            break;
-        default:
-            std::cerr << "Línea desconocida en config.txt\n";
-        }
-        lineNumber++;
-    }
-
-
-    // Calcular límites después de tener columnas
-    limitLosSantos = columnas / 3;
-    limitSanFierro = limitLosSantos * 2;
-
-    // Inicialización de la matriz
-    m_Type = new objectType * [filas];
-    for (int i = 0; i < filas; ++i) {
-        m_Type[i] = new objectType[columnas];
-        for (int j = 0; j < columnas; ++j) {
-            // 1. Por defecto, todo es transitable (DEFAULT)
-            m_Type[i][j] = objectType::DEFAULT;
-
-            // 2. Todos los bordes son LIMIT 
-            if (i == 0 || j == 0 || i == filas - 1 || j == columnas - 1 ||    j == limitLosSantos || j == limitSanFierro) {
-                m_Type[i][j] = objectType::LIMIT;
-            }
-
-            // 3.Colocar passaje
-            if (i == 40 && j == limitLosSantos) {
-                m_Type[i][j] = objectType::PEAJE;  
-            }
-            
-            if (i == 10 && j == limitSanFierro)
-            {
-                m_Type[i][j] = objectType::PEAJE;
-            }
-        }
-    }
-}
+//Map::Map(const FileRead& fileRead)
+//{
+//	m_filas = fileRead.getFilas();
+//	m_columnas = fileRead.getColumnas();
+//	m_totalToSanFierro = fileRead.getTotalToSanFierro();
+//	m_totalToLasVenturas = fileRead.getTotalToLasVenturas();
+//	m_limitLosSantos = fileRead.getLimitLosSantos();
+//	m_limitSanFierro = fileRead.getLimitSanFierro();
+//    // Inicialización de la matriz
+//    m_Type = new objectType * [m_filas];
+//    for (int i = 0; i < m_filas; ++i) {
+//        m_Type[i] = new objectType[m_columnas];
+//        for (int j = 0; j < m_columnas; ++j) {
+//            // 1. Por defecto, todo es transitable (DEFAULT)
+//            m_Type[i][j] = objectType::DEFAULT;
+//
+//            // 2. Todos los bordes son LIMIT 
+//            if (i == 0 || j == 0 || i == m_filas - 1 || j == m_columnas - 1 ||    j == m_limitLosSantos || j == m_limitSanFierro) {
+//                m_Type[i][j] = objectType::LIMIT;
+//            }
+//
+//            // 3.Colocar passaje
+//            if (i == 40 && j == m_limitLosSantos) {
+//                m_Type[i][j] = objectType::PEAJE;  
+//            }
+//            
+//            if (i == 10 && j == m_limitSanFierro)
+//            {
+//                m_Type[i][j] = objectType::PEAJE;
+//            }
+//        }
+//    }
+//}
 Map::~Map() 
 {
     if (m_Type) 
     {
-        for (int i = 0; i < filas; ++i) 
+        for (int i = 0; i < m_filas; ++i) 
         {
             delete[] m_Type[i];
         }

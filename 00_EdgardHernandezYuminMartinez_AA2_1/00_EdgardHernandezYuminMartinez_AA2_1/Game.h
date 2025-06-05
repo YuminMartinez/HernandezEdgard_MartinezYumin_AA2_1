@@ -11,11 +11,23 @@ class Game
 private:
 	
 public:
-	FileRead m_fileRead;
+	
+	
+	FileRead m_fileRead; 
 	Map m_map;
 	Player m_player;
 	NPC m_NPC;
 	Car m_car;
+	Game()
+		: m_fileRead(),
+		m_map(m_fileRead),
+		m_player(),
+		m_NPC(m_fileRead),
+		m_car()
+	{
+		CreateNPC();
+	}
+	int cityInGame = 0; // 0: Los Santos, 1: San Fierro, 2: Las Venturas
 	int menuOption = 0;
 	bool finish = false;
 	bool startGame = false;
@@ -35,10 +47,11 @@ public:
 	void PrintInit();
 	void Menu();
 	void PlayerInPut();
-	void setPlayer();
-	void printMap() const;
+	void SetPlayer();
+	void PrintMap() const;
 	void CreateNPC();
 	void NPCMoviment();
+	~Game();
 };
 
 

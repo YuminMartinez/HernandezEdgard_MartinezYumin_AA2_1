@@ -16,15 +16,16 @@ void CleanScreen() {
 int main()
 {
 	srand(time(NULL));
+	
 	Game game;
 	game.PrintInit();
 	Sleep(timeToWait);
 	//game.m_fileRead;
-	/*	game.m_map;
-	game.m_player;
-	game.m_NPC;
-	game.CreateNPC();*/
-	game.m_fileRead;
+	//game.m_map;
+	//game.m_player;
+	//game.m_NPC;
+	//game.CreateNPC();
+	
 	while (game.finish == false)
 	{
 		if (game.IsDead == true)
@@ -38,7 +39,7 @@ int main()
 			CleanScreen();
 			game.PlayerInPut();
 			game.NPCMoviment();
-			game.printMap();
+			game.PrintMap();
 			Sleep(1000 / NUM_FPS);
 		}
 		

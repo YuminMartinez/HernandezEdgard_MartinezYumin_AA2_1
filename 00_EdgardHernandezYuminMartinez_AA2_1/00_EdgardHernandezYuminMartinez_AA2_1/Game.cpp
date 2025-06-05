@@ -1,6 +1,7 @@
 #include "Game.h"
 #include <Windows.h> 
 
+
 void Game::PrintInit()
 {
     std::cout << "|--------------------------------------------|" << std::endl;
@@ -45,118 +46,129 @@ void Game::PlayerInPut()
 {
     int x = m_player.getPosX();
     int y = m_player.getPosY();
-
-    // se mueve hacia delante
-    if (GetAsyncKeyState(VK_LEFT) & 0x8000 && y > 0)
+    if (m_player.getPosY() < m_map.getLimitLosSantos())
     {
-        if (m_map.m_Type[x][y - 1] == objectType::DEFAULT|| m_map.m_Type[x][y - 1] == objectType::PEAJE)
-        {
-            m_map.m_Type[x][y] = objectType::DEFAULT;
-            m_player.moveLeft(); 
-            m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_LEFT;
-        }
-        else if (m_map.m_Type[x][y - 1] == objectType::MONEY)
-        {
-            m_map.m_Type[x][y] = objectType::DEFAULT;
-            m_player.moveLeft(); 
-            m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_LEFT;
-            m_player.addMoney(m_player.getMoney() + numRandom(1, m_map.getMaxMoneySantos()));
-            
-
-        }
-    }// se mueve hacia izquierda
-    else if (GetAsyncKeyState(VK_UP) & 0x8000 && y > 0)
-    {
-        if (m_map.m_Type[x - 1][y] == objectType::DEFAULT|| m_map.m_Type[x - 1][y] == objectType::PEAJE)
-        {
-            m_map.m_Type[x][y] = objectType::DEFAULT;
-            m_player.moveForward();
-            m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_UP;
-        }
-        else if (m_map.m_Type[x - 1][y] == objectType::MONEY)
-        {
-            m_map.m_Type[x][y] = objectType::DEFAULT;
-            m_player.moveForward();
-            
-            m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_UP;
-            m_player.addMoney(m_player.getMoney() + numRandom(1, m_map.getMaxMoneySantos()));
-        }
-    }// se mueve hacia atras
-    else if (GetAsyncKeyState(VK_RIGHT) & 0x8000 && x < m_map.getFilas() - 1)
-    {
-        if (m_map.m_Type[x][y + 1] == objectType::DEFAULT|| m_map.m_Type[x][y + 1] == objectType::PEAJE)
-        {
-            m_map.m_Type[x][y] = objectType::DEFAULT;
-            m_player.moveRight();
-            m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_RIGHT;
-           
-        }
-        else if (m_map.m_Type[x][y + 1] == objectType::MONEY)
-        {
-            m_map.m_Type[x][y] = objectType::DEFAULT;
-            m_player.moveRight();
-            m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_RIGHT;
-            m_player.addMoney(m_player.getMoney() + numRandom(1, m_map.getMaxMoneySantos()));
-
-        }
-    }// se mueve hacia derecha
-    else if (GetAsyncKeyState(VK_DOWN) & 0x8000 && y < m_map.getColumnas() - 1)
-    {
-        if (m_map.m_Type[x + 1][y] == objectType::DEFAULT|| m_map.m_Type[x + 1][y] == objectType::PEAJE)
-        {
-            m_map.m_Type[x][y] = objectType::DEFAULT;
-            m_player.moveBack();
-            m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_DOWN;
-          
-        }
-        else if (m_map.m_Type[x + 1][y] == objectType::MONEY)
-        {
-            m_map.m_Type[x][y] = objectType::DEFAULT;
-            m_player.moveBack();
-            m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_DOWN;
-            m_player.addMoney(m_player.getMoney() + numRandom(1, m_map.getMaxMoneySantos()));
-        }
-
+        cityInGame = 0; // Los Santos
     }
-    else
+    else if (m_player.getPosY() > m_map.getLimitLosSantos() && m_player.getPosY() < m_map.getLimitSanFierro())
     {
-        m_player.SetPosX(x);
-        m_player.setPosY(y);
+        cityInGame = 1; // San Fierro
     }
-    
-    if (GetAsyncKeyState(VK_SPACE) & 0x8000) 
+    else if (m_player.getPosY() >= m_map.getLimitSanFierro())
     {
-        // Coordenadas de las 4 casillas adyacentes (arriba, abajo, izquierda, derecha)
-        int adjacent[4][2] = { {x - 1, y}, {x + 1, y}, {x, y - 1}, {x, y + 1} };
-        // Buscar NPCs adyacentes
-        for (int i = 0; i < 4; ++i)
+        cityInGame = 2; // Las Venturas
+        // se mueve hacia delante
+        if (GetAsyncKeyState(VK_LEFT) & 0x8000 && y > 0)
         {
-            int targetX = adjacent[i][0];
-            int targetY = adjacent[i][1];
-
-
-            // Verificar si hay un NPC en la posición de ataque
-            if (targetX >= 0 && targetX < m_map.getFilas() &&  targetY >= 0 && targetY < m_map.getColumnas() && m_map.m_Type[targetX][targetY] == objectType::NPC) 
+            if (m_map.m_Type[x][y - 1] == objectType::DEFAULT || m_map.m_Type[x][y - 1] == objectType::PEAJE)
             {
-                // 1. Eliminar el NPC del array
-                for (int i = 0; i < m_map.getNPC(); i++) 
+                m_map.m_Type[x][y] = objectType::DEFAULT;
+                m_player.moveLeft();
+                m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_LEFT;
+            }
+            else if (m_map.m_Type[x][y - 1] == objectType::MONEY)
+            {
+                m_map.m_Type[x][y] = objectType::DEFAULT;
+                m_player.moveLeft();
+                m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_LEFT;
+                m_player.addMoney(m_player.getMoney() + numRandom(1, m_NPC.getMaxMoneySantos()));
+
+
+            }
+        }// se mueve hacia izquierda
+        else if (GetAsyncKeyState(VK_UP) & 0x8000 && y > 0)
+        {
+            if (m_map.m_Type[x - 1][y] == objectType::DEFAULT || m_map.m_Type[x - 1][y] == objectType::PEAJE)
+            {
+                m_map.m_Type[x][y] = objectType::DEFAULT;
+                m_player.moveForward();
+                m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_UP;
+            }
+            else if (m_map.m_Type[x - 1][y] == objectType::MONEY)
+            {
+                m_map.m_Type[x][y] = objectType::DEFAULT;
+                m_player.moveForward();
+
+                m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_UP;
+                m_player.addMoney(m_player.getMoney() + numRandom(1, m_NPC.getMaxMoneySantos()));
+            }
+        }// se mueve hacia atras
+        else if (GetAsyncKeyState(VK_RIGHT) & 0x8000 && x < m_map.getFilas() - 1)
+        {
+            if (m_map.m_Type[x][y + 1] == objectType::DEFAULT || m_map.m_Type[x][y + 1] == objectType::PEAJE)
+            {
+                m_map.m_Type[x][y] = objectType::DEFAULT;
+                m_player.moveRight();
+                m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_RIGHT;
+
+            }
+            else if (m_map.m_Type[x][y + 1] == objectType::MONEY)
+            {
+                m_map.m_Type[x][y] = objectType::DEFAULT;
+                m_player.moveRight();
+                m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_RIGHT;
+                m_player.addMoney(m_player.getMoney() + numRandom(1, m_NPC.getMaxMoneySantos()));
+
+            }
+        }// se mueve hacia derecha
+        else if (GetAsyncKeyState(VK_DOWN) & 0x8000 && y < m_map.getColumnas() - 1)
+        {
+            if (m_map.m_Type[x + 1][y] == objectType::DEFAULT || m_map.m_Type[x + 1][y] == objectType::PEAJE)
+            {
+                m_map.m_Type[x][y] = objectType::DEFAULT;
+                m_player.moveBack();
+                m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_DOWN;
+
+            }
+            else if (m_map.m_Type[x + 1][y] == objectType::MONEY)
+            {
+                m_map.m_Type[x][y] = objectType::DEFAULT;
+                m_player.moveBack();
+                m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_DOWN;
+                m_player.addMoney(m_player.getMoney() + numRandom(1, m_NPC.getMaxMoneySantos()));
+            }
+
+        }
+        else
+        {
+            m_player.SetPosX(x);
+            m_player.setPosY(y);
+        }
+
+        if (GetAsyncKeyState(VK_SPACE) & 0x8000)
+        {
+            // Coordenadas de las 4 casillas adyacentes (arriba, abajo, izquierda, derecha)
+            int adjacent[4][2] = { {x - 1, y}, {x + 1, y}, {x, y - 1}, {x, y + 1} };
+            // Buscar NPCs adyacentes
+            for (int i = 0; i < 4; ++i)
+            {
+                int targetX = adjacent[i][0];
+                int targetY = adjacent[i][1];
+
+
+                // Verificar si hay un NPC en la posición de ataque
+                if (targetX >= 0 && targetX < m_map.getFilas() && targetY >= 0 && targetY < m_map.getColumnas() && m_map.m_Type[targetX][targetY] == objectType::NPC)
                 {
-                    if (m_NPC.npc_PosX[i] == targetX && m_NPC.npc_PosY[i] == targetY) 
+                    // 1. Eliminar el NPC del array
+                    for (int i = 0; i < m_NPC.getNPC(); i++)
                     {
-                        m_NPC.npc_Alive[i] = false;
-                        break;
+                        if (m_NPC.npc_PosX[i] == targetX && m_NPC.npc_PosY[i] == targetY)
+                        {
+                            m_NPC.npc_Alive[i] = false;
+                            break;
+                        }
                     }
+                    m_map.m_Type[targetX][targetY] = objectType::MONEY;
                 }
-                m_map.m_Type[targetX][targetY] = objectType::MONEY;
             }
         }
     }
 }
 
-void Game::printMap() const
+void Game::PrintMap() const
 {
     
-    /// calcular la posición de inicio para la vista
+    // calcular la posición de inicio para la vista
     int startFila = m_player.getPosX() - m_player.getPlayerViewHeight()/ 2;  // Filas (Y)
     int startCol = m_player.getPosY() - m_player.getPlayerViewWidth() / 2;   // Columnas (X)
 
@@ -250,8 +262,8 @@ void Game::printMap() const
     std::cout << "\nDinero: " << m_player.getMoney() << "$";
 
     
-    /*
-    for (int i = 0; i < m_map.getFilas(); ++i) {
+    
+   /* for (int i = 0; i < m_map.getFilas(); ++i) {
         for (int j = 0; j < m_map.getColumnas(); ++j) {
             switch (m_map.m_Type[i][j]) {
             case objectType::LIMIT: std::cout << "X"; break;
@@ -268,19 +280,19 @@ void Game::printMap() const
             }
         }
         std::cout << '\n';
-    }
-    */
+    }*/
+    
 
 }
 
-void Game::setPlayer() 
+void Game::SetPlayer() 
 {
    
     m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_UP;
 }
 void Game::CreateNPC()
 {
-    for (int i = 0; i < m_map.getNPC(); i++) 
+    for (int i = 0; i < m_NPC.getNpcLosSantos(); i++)
     {
         do 
         {
@@ -291,7 +303,7 @@ void Game::CreateNPC()
         m_map.m_Type[m_NPC.npc_PosX[i]][m_NPC.npc_PosY[i]] = objectType::NPC;
         m_NPC.npc_Alive[i] = true;
     }
-    for (int i = m_map.getNPC(); i < m_map.getNPC()+m_map.getNPCSanFierro(); i++)
+    for (int i = m_NPC.getNpcLosSantos(); i < m_NPC.getNpcLosSantos() + m_NPC.getNpcSanFierro(); i++)
     {
         do
         {
@@ -302,10 +314,14 @@ void Game::CreateNPC()
         m_map.m_Type[m_NPC.npc_PosX[i]][m_NPC.npc_PosY[i]] = objectType::NPC;
         m_NPC.npc_Alive[i] = true;
     }
+    for (int i = m_NPC.getNpcLosSantos() + m_NPC.getNpcSanFierro(); i < m_NPC.getNpcLosSantos() + m_NPC.getNpcSanFierro() + m_NPC.getLifeNpcLasVenturas(); i++)
+    {
+
+    }
 }
 void Game::NPCMoviment()
 {
-    for (int p = 0; p < m_map.getNPC()+ m_map.getNPCSanFierro(); p++)
+    for (int p = 0; p < m_NPC.getNPC()+ m_NPC.getNpcSanFierro(); p++)
     {
         if (m_NPC.npc_Alive[p] == true)
         {
@@ -317,7 +333,7 @@ void Game::NPCMoviment()
                     int  t = 0;
                     int checkPosX = m_player.getPosX() + i;
                     int checkPosY = m_player.getPosY() + j;
-                    while (t < m_map.getNPC()+ m_map.getNPCSanFierro())
+                    while (t < m_NPC.getNPC()+ m_NPC.getNpcSanFierro())
                     {
                         if (m_NPC.npc_PosX[t] == checkPosX && m_NPC.npc_PosY[t] == checkPosY)
                         {
@@ -327,7 +343,7 @@ void Game::NPCMoviment()
                     }
                 }
             }
-            for (int totalNPC = 0; totalNPC < m_map.getNPC()+m_map.getNPCSanFierro(); totalNPC++)
+            for (int totalNPC = 0; totalNPC < m_NPC.getNPC()+ m_NPC.getNpcSanFierro(); totalNPC++)
             {
                 if (playerInRange[totalNPC] == false)
                 {
@@ -392,4 +408,8 @@ void Game::NPCMoviment()
             m_NPC.npc_Alive[p] = true;
         }
     }
+}
+Game::~Game()
+{
+
 }
