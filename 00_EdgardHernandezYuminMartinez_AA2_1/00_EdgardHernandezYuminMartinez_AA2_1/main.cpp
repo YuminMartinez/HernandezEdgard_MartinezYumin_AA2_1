@@ -1,6 +1,6 @@
 #include "Util.h"
 #include "Game.h"
-const int NUM_FPS = 100;
+const int NUM_FPS =30 ;
 const int timeToWait = 3000;
 int numRandom(int min, int max)
 {
@@ -18,7 +18,10 @@ int main()
 	srand(time(NULL));
 	
 	Game game;
+	game.m_player.SetPos(game.m_fileRead.getFilas() - 1, game.m_fileRead.getLimitLosSantos() - 1);
 	game.PrintInit();
+	game.m_player.StatsCJ(game.m_fileRead.getLifeCJ(), game.m_fileRead.getPowerCJ());
+	game.SetPlayer();
 	Sleep(timeToWait);
 	//game.m_fileRead;
 	//game.m_map;
@@ -37,6 +40,7 @@ int main()
 		else 
 		{
 			CleanScreen();
+			
 			game.PlayerInPut();
 			game.NPCMoviment();
 			game.PrintMap();

@@ -46,18 +46,7 @@ void Game::PlayerInPut()
 {
     int x = m_player.getPosX();
     int y = m_player.getPosY();
-    if (m_player.getPosY() < m_map.getLimitLosSantos())
-    {
-        cityInGame = 0; // Los Santos
-    }
-    else if (m_player.getPosY() > m_map.getLimitLosSantos() && m_player.getPosY() < m_map.getLimitSanFierro())
-    {
-        cityInGame = 1; // San Fierro
-    }
-    else if (m_player.getPosY() >= m_map.getLimitSanFierro())
-    {
-        cityInGame = 2; // Las Venturas
-        // se mueve hacia delante
+      // se mueve hacia delante
         if (GetAsyncKeyState(VK_LEFT) & 0x8000 && y > 0)
         {
             if (m_map.m_Type[x][y - 1] == objectType::DEFAULT || m_map.m_Type[x][y - 1] == objectType::PEAJE)
@@ -71,7 +60,7 @@ void Game::PlayerInPut()
                 m_map.m_Type[x][y] = objectType::DEFAULT;
                 m_player.moveLeft();
                 m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_LEFT;
-                m_player.addMoney(m_player.getMoney() + numRandom(1, m_NPC.getMaxMoneySantos()));
+                m_player.addMoney(numRandom(1, m_NPC.getMaxMoneySantos()));
 
 
             }
@@ -90,7 +79,7 @@ void Game::PlayerInPut()
                 m_player.moveForward();
 
                 m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_UP;
-                m_player.addMoney(m_player.getMoney() + numRandom(1, m_NPC.getMaxMoneySantos()));
+                m_player.addMoney( numRandom(1, m_NPC.getMaxMoneySantos()));
             }
         }// se mueve hacia atras
         else if (GetAsyncKeyState(VK_RIGHT) & 0x8000 && x < m_map.getFilas() - 1)
@@ -107,7 +96,7 @@ void Game::PlayerInPut()
                 m_map.m_Type[x][y] = objectType::DEFAULT;
                 m_player.moveRight();
                 m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_RIGHT;
-                m_player.addMoney(m_player.getMoney() + numRandom(1, m_NPC.getMaxMoneySantos()));
+                m_player.addMoney( numRandom(1, m_NPC.getMaxMoneySantos()));
 
             }
         }// se mueve hacia derecha
@@ -125,7 +114,7 @@ void Game::PlayerInPut()
                 m_map.m_Type[x][y] = objectType::DEFAULT;
                 m_player.moveBack();
                 m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_DOWN;
-                m_player.addMoney(m_player.getMoney() + numRandom(1, m_NPC.getMaxMoneySantos()));
+                m_player.addMoney( numRandom(1, m_NPC.getMaxMoneySantos()));
             }
 
         }
@@ -162,14 +151,14 @@ void Game::PlayerInPut()
                 }
             }
         }
-    }
+    
 }
 
 void Game::PrintMap() const
 {
     
     // calcular la posición de inicio para la vista
-    int startFila = m_player.getPosX() - m_player.getPlayerViewHeight()/ 2;  // Filas (Y)
+    int startFila = m_player.getPosX() - m_player.getPlayerViewHeight() / 2;  // Filas (Y)
     int startCol = m_player.getPosY() - m_player.getPlayerViewWidth() / 2;   // Columnas (X)
 
     // Corregir los límites: asegurarnos de que la vista no se sale del mapa
@@ -243,7 +232,7 @@ void Game::PrintMap() const
                         std::cout << " ";
                         break;
                     case objectType::PEAJE:
-                        std::cout << " ";
+                        std::cout << "T";
                         break;
                     default:
                         std::cout << "?";
@@ -260,10 +249,10 @@ void Game::PrintMap() const
     std::cout << "\nVista: " << m_player.getPlayerViewWidth() << "x" << m_player.getPlayerViewHeight();
     std::cout << "\nMapa: " << m_map.getColumnas() << "x" << m_map.getFilas();
     std::cout << "\nDinero: " << m_player.getMoney() << "$";
-
+	std::cout << "\nVidaCJ: " << m_player.getLife() << std::endl;
     
     
-   /* for (int i = 0; i < m_map.getFilas(); ++i) {
+    /*for (int i = 0; i < m_map.getFilas(); ++i) {
         for (int j = 0; j < m_map.getColumnas(); ++j) {
             switch (m_map.m_Type[i][j]) {
             case objectType::LIMIT: std::cout << "X"; break;
@@ -302,8 +291,9 @@ void Game::CreateNPC()
 
         m_map.m_Type[m_NPC.npc_PosX[i]][m_NPC.npc_PosY[i]] = objectType::NPC;
         m_NPC.npc_Alive[i] = true;
+		
     }
-    for (int i = m_NPC.getNpcLosSantos(); i < m_NPC.getNpcLosSantos() + m_NPC.getNpcSanFierro(); i++)
+    for (int i = m_NPC.getNpcLosSantos(); i < (m_NPC.getNpcLosSantos() + m_NPC.getNpcSanFierro()); i++)
     {
         do
         {
@@ -313,101 +303,112 @@ void Game::CreateNPC()
 
         m_map.m_Type[m_NPC.npc_PosX[i]][m_NPC.npc_PosY[i]] = objectType::NPC;
         m_NPC.npc_Alive[i] = true;
+        
     }
-    for (int i = m_NPC.getNpcLosSantos() + m_NPC.getNpcSanFierro(); i < m_NPC.getNpcLosSantos() + m_NPC.getNpcSanFierro() + m_NPC.getLifeNpcLasVenturas(); i++)
+    for (int i = m_NPC.getNpcLosSantos() + m_NPC.getNpcSanFierro(); i < (m_NPC.getNpcLosSantos() + m_NPC.getNpcSanFierro() + m_NPC.getNpcLasVenturas()); i++)
     {
-
+		do
+		{
+			m_NPC.npc_PosX[i] = numRandom(1, m_map.getFilas() - 1);
+			m_NPC.npc_PosY[i] = numRandom(m_map.getLimitSanFierro() + 1, m_map.getColumnas() - 1);
+		} while (m_map.m_Type[m_NPC.npc_PosX[i]][m_NPC.npc_PosY[i]] != objectType::DEFAULT);  // Asegura que solo spawnean en un lugar donde este vacio
+		m_map.m_Type[m_NPC.npc_PosX[i]][m_NPC.npc_PosY[i]] = objectType::NPC;
+		m_NPC.npc_Alive[i] = true;
+        
     }
 }
 void Game::NPCMoviment()
 {
-    for (int p = 0; p < m_NPC.getNPC()+ m_NPC.getNpcSanFierro(); p++)
-    {
-        if (m_NPC.npc_Alive[p] == true)
+   
+        for (int p = 0; p < m_NPC.getNPC(); p++)
         {
-            bool playerInRange[24] = { false };
-            for (int i = -1; i <= 1; i++)
+            if (m_NPC.npc_Alive[p] == true)
             {
-                for (int j = -1; j <= 1; j++)
+                bool playerInRange[24] = { false };
+                for (int i = -1; i <= 1; i++)
                 {
-                    int  t = 0;
-                    int checkPosX = m_player.getPosX() + i;
-                    int checkPosY = m_player.getPosY() + j;
-                    while (t < m_NPC.getNPC()+ m_NPC.getNpcSanFierro())
+                    for (int j = -1; j <= 1; j++)
                     {
-                        if (m_NPC.npc_PosX[t] == checkPosX && m_NPC.npc_PosY[t] == checkPosY)
+                        int  t = 0;
+                        int checkPosX = m_player.getPosX() + i;
+                        int checkPosY = m_player.getPosY() + j;
+                        while (t < m_NPC.getNPC())
                         {
-                            playerInRange[t] = true;
-                        }
-                        t++;
-                    }
-                }
-            }
-            for (int totalNPC = 0; totalNPC < m_NPC.getNPC()+ m_NPC.getNpcSanFierro(); totalNPC++)
-            {
-                if (playerInRange[totalNPC] == false)
-                {
-                    bool moved = false;
-                    int intentos = 0;
-                    while (!moved && intentos < 10)
-                    {
-                        int newX = m_NPC.npc_PosX[totalNPC];
-                        int newY = m_NPC.npc_PosY[totalNPC];
-                        int randomMoviment = numRandom(1, 4);
-
-                        switch (randomMoviment)
-                        {
-                        case 1: // Arriba
-                            newX--;
-                            break;
-                        case 2: // Abajo
-                            newX++;
-                            break;
-                        case 3: // Izquierda
-                            newY--;
-                            break;
-                        case 4: // Derecha
-                            newY++;
-                            break;
-                        }
-                        int limiteX = m_map.getFilas() - 1;
-                        int limiteY = m_map.getColumnas() - 1;
-                        // Verifica que la posición nueva esté dentro del mapa
-                        if (newX >= 0 && newX < limiteX && newY >= 0 && newY < limiteY)
-                        {
-                            // Verifica que la casilla esté vacía
-                            if (m_map.m_Type[newX][newY] == objectType::DEFAULT) 
+                            if (m_NPC.npc_PosX[t] == checkPosX && m_NPC.npc_PosY[t] == checkPosY)
                             {
-                                // Libera la casilla anterior
-                                m_map.m_Type[m_NPC.npc_PosX[totalNPC]][m_NPC.npc_PosY[totalNPC]] = objectType::DEFAULT;
-
-                                // Actualiza posición
-                                m_NPC.npc_PosX[totalNPC] = newX;
-                                m_NPC.npc_PosY[totalNPC] = newY;
-
-                                // Marca la casilla como NPC
-                                m_map.m_Type[newX][newY] = objectType::NPC;
-
-                                moved = true;
+                                playerInRange[t] = true;
                             }
+                            t++;
                         }
-                        intentos++;
+                    }
+                }
+                for (int totalNPC = 0; totalNPC < m_NPC.getNPC(); totalNPC++)
+                {
+                    if (playerInRange[totalNPC] == false)
+                    {
+                        bool moved = false;
+                        int intentos = 0;
+                        while (!moved && intentos < 10)
+                        {
+                            int newX = m_NPC.npc_PosX[totalNPC];
+                            int newY = m_NPC.npc_PosY[totalNPC];
+                            int randomMoviment = numRandom(1, 4);
+
+                            switch (randomMoviment)
+                            {
+                            case 1: // Arriba
+                                newX--;
+                                break;
+                            case 2: // Abajo
+                                newX++;
+                                break;
+                            case 3: // Izquierda
+                                newY--;
+                                break;
+                            case 4: // Derecha
+                                newY++;
+                                break;
+                            }
+                            int limiteX = m_map.getFilas() - 1;
+                            int limiteY = m_map.getColumnas() - 1;
+                            // Verifica que la posición nueva esté dentro del mapa
+                            if (newX >= 0 && newX < limiteX && newY >= 0 && newY < limiteY)
+                            {
+                                // Verifica que la casilla esté vacía
+                                if (m_map.m_Type[newX][newY] == objectType::DEFAULT)
+                                {
+                                    // Libera la casilla anterior
+                                    m_map.m_Type[m_NPC.npc_PosX[totalNPC]][m_NPC.npc_PosY[totalNPC]] = objectType::DEFAULT;
+
+                                    // Actualiza posición
+                                    m_NPC.npc_PosX[totalNPC] = newX;
+                                    m_NPC.npc_PosY[totalNPC] = newY;
+
+                                    // Marca la casilla como NPC
+                                    m_map.m_Type[newX][newY] = objectType::NPC;
+
+                                    moved = true;
+                                }
+                            }
+                            intentos++;
+                        }
                     }
                 }
             }
-        }
-        else
-        {
-            do 
+            else
             {
-                m_NPC.npc_PosX[p] = numRandom(1, m_map.getFilas() - 1);
-                m_NPC.npc_PosY[p] = numRandom(1, m_map.getLimitLosSantos() - 1);
-            } while (m_map.m_Type[m_NPC.npc_PosX[p]][m_NPC.npc_PosY[p]] != objectType::DEFAULT);  // Asegura que solo spawnean en un lugar donde este vacio
+                do
+                {
+                    m_NPC.npc_PosX[p] = numRandom(1, m_map.getFilas() - 1);
+                    m_NPC.npc_PosY[p] = numRandom(1, m_map.getLimitLosSantos() - 1);
+                } while (m_map.m_Type[m_NPC.npc_PosX[p]][m_NPC.npc_PosY[p]] != objectType::DEFAULT);  // Asegura que solo spawnean en un lugar donde este vacio
 
-            m_map.m_Type[m_NPC.npc_PosX[p]][m_NPC.npc_PosY[p]] = objectType::NPC;
-            m_NPC.npc_Alive[p] = true;
+                m_map.m_Type[m_NPC.npc_PosX[p]][m_NPC.npc_PosY[p]] = objectType::NPC;
+                m_NPC.npc_Alive[p] = true;
+            }
         }
-    }
+        
+    
 }
 Game::~Game()
 {

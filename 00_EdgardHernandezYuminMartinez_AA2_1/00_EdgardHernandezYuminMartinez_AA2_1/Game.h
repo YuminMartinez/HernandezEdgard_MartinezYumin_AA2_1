@@ -11,8 +11,6 @@ class Game
 private:
 	
 public:
-	
-	
 	FileRead m_fileRead; 
 	Map m_map;
 	Player m_player;
@@ -26,9 +24,11 @@ public:
 		m_car()
 	{
 		CreateNPC();
+		
 	}
-	int cityInGame = 0; // 0: Los Santos, 1: San Fierro, 2: Las Venturas
+	
 	int menuOption = 0;
+	int iteration = 0; // Contador de iteraciones para el movimiento de NPCs
 	bool finish = false;
 	bool startGame = false;
 	bool IsDead = true;

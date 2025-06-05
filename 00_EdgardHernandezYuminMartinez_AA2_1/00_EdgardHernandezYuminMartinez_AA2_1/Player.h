@@ -8,11 +8,12 @@ private:
 	int money = 0;
 	int playerView_Width = 11;
 	int playerView_Heigh = 11;
-	
+	int life;
+	int power;
 	
 public:
-
 	Player();
+	
 	
 	// Getters
 	int getPosX() const 
@@ -35,7 +36,16 @@ public:
 	{
 		return  playerView_Heigh;
 	}
+	int getLife() const
+	{
+		return life;
+	}
+	int getPower() const
+	{
+		return power;
+	}
 
+	void StatsCJ(int, int);
 	//Setterss
 	void addMoney(int amount) {
 		if (amount > 0)
@@ -58,6 +68,6 @@ public:
 	void moveLeft();
 	void moveBack();
 	void moveRight();
-
+	void SetPos(int, int);
 	
 };
