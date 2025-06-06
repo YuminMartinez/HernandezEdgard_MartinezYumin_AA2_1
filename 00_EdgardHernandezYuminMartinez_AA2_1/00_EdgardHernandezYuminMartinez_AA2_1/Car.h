@@ -1,30 +1,23 @@
 #pragma once
 class Car
 {
-private: 
-	bool isParked = true;
-	int posX;
-	int PosY;
+private:
+	// Coches en cada ciudad
+	int NumCarSantos = 3;
+	int NumCarSanFierro = 3;
+	int NumCarLasVenturas = 3;
+public:
 
-public :
-	// Getters
-	int getPosX() const 
-	{
-		return posX;
+	int GetNumCarSanFierro() const {
+		return NumCarSanFierro;
 	}
-	int getPosY() const 
-	{
-		return PosY;
-	}
-	bool getIsParked() const 
-	{ 
-		return isParked;
+	int GetNumCarSantos() const {
+		return NumCarSantos;
 	}
 
-	// Interact cj
-	void enterCar() { isParked = false; }  // CJ up
-	void exitCar() { isParked = true; }    // CJ down
-
+	int GetNumCarLasVenturas() const {
+		return NumCarLasVenturas;
+	}
 
 };
 

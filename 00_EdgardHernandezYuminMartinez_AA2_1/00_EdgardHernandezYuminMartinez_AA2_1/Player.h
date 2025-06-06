@@ -11,6 +11,7 @@ private:
 	int life;
 	int power;
 	bool cjDead = false; 
+	bool InCar = false; 
 public:
 	Player();
 	
@@ -48,7 +49,10 @@ public:
 	{
 		return cjDead;
 	}
-	
+	bool isInCar() const
+	{
+		return InCar;
+	}
 	void StatsCJ(int, int);
 	//Setterss
 	void addMoney(int amount) {
@@ -79,5 +83,13 @@ public:
 	void moveRight();
 	void SetPos(int, int);
 	void RecieveDamage(int);
-	
+	void setInCar(bool state)
+	{
+		InCar = state;
+	}
+
+	void subtractMoney(int amount)
+	{
+		money -= amount;
+	}
 };

@@ -34,12 +34,6 @@ int main()
             game.Menu();
             Sleep(1000 / NUM_FPS);
         }
-		/*else if (game.startGame == true && game.resetValue == false)
-		{
-			CleanScreen();
-            game.ResetGame();
-			Sleep(1000 / NUM_FPS);
-		}*/
         else
         {
             CleanScreen();
@@ -55,7 +49,7 @@ int main()
             }
             game.PrintMap();
             Sleep(1000 / NUM_FPS); // Control de framerate
-            if (game.m_NPC.bsAlife == false || game.m_player.GetCJDead() == true)
+            if (game.m_NPC.bsAlife == false || game.m_player.GetCJDead() == true || game.acrossNoMoney == true)
             {
 				
 				if (game.m_NPC.bsAlife == false)
@@ -68,8 +62,14 @@ int main()
 					std::cout << "CJ ha muerto. Game Over." << std::endl;
                     Sleep(5000);
 				}
+				else if (game.acrossNoMoney == true)
+				{
+					std::cout << "La policia te ha detenido  Game Over." << std::endl;
+					Sleep(5000);
+				}
                 game.IsDead = true;
                 game.startGame = false;
+                game.acrossNoMoney = false;
             }
             if (game.IsDead == true)
             {
@@ -79,20 +79,5 @@ int main()
         }
     }
 	
-	/*while (game.finish == false)
-	{
-		
-		CleanScreen();
-		//INPUT
-		game.PlayerInPut();
-		
-		//UPDATE
-		game.NPCMoviment();
-
-		//RENDER
-		game.printMap();
 	
-		//FRAME CONTROL
-		Sleep(1000 / NUM_FPS);
-	}*/
 }

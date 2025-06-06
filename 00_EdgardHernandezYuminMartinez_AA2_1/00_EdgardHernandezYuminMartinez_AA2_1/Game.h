@@ -26,13 +26,14 @@ public:
 		m_car()
 	{
 		CreateNPC();
-		
+		SetCars();
 	}
 	
-	int MapPos = 0; // 0 = Los Santos, 1 = San Fierro, 2 = Las Venturas
+
 	int menuOption = -1;
 	int iteration = 0; // Contador de iteraciones para el movimiento de NPCs
 	bool finish = false;
+	bool acrossNoMoney = false; 
 	bool startGame = false;
 	bool IsDead = true;
 	void ResetGame();
@@ -57,6 +58,10 @@ public:
 	void CreateNPC();
 	void NPCMoviment();
 	void AttackNPC();
+	int GetCurrentZone();
+	void KillNpcWithCar();
+	bool HandlePeaje();
+	void SetCars();
 	~Game();
 };
 
