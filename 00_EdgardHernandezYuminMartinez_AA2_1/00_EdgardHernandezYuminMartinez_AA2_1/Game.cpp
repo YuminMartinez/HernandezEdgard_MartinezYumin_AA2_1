@@ -47,7 +47,7 @@ bool Game::HandlePeaje()
 void Game::KillNpcWithCar()
 {
     // 1. Buscar el NPC en lista y marcarlo como muerto
-    for (int j = 0; j < m_NPC.getNPC(); j++)
+    for (int j = 0; j < m_NPC.GetNPC(); j++)
     {
         if (m_NPC.npc_PosX[j] == m_player.getPosX() && m_NPC.npc_PosY[j] == m_player.getPosY())
         {
@@ -173,15 +173,15 @@ void Game::PlayerInPut()
                 m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_LEFT;
                 if (GetCurrentZone() == 0)
                 {
-                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneySantos()));
+                    m_player.addMoney(numRandom(1, m_NPC.GetMaxMoneySantos()));
                 }
                 else if (GetCurrentZone() == 1)
                 {
-                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneySanFierro()));
+                    m_player.addMoney(numRandom(1, m_NPC.GetMaxMoneySanFierro()));
                 }
                 else if (GetCurrentZone() == 2)
                 {
-                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneyLasVenturas()));
+                    m_player.addMoney(numRandom(1, m_NPC.GetMaxMoneyLasVenturas()));
                 }
             }
         }
@@ -226,15 +226,15 @@ void Game::PlayerInPut()
                 m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_UP;
                 if (GetCurrentZone() == 0)
                 {
-                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneySantos()));
+                    m_player.addMoney(numRandom(1, m_NPC.GetMaxMoneySantos()));
                 }
                 else if (GetCurrentZone() == 1)
                 {
-                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneySanFierro()));
+                    m_player.addMoney(numRandom(1, m_NPC.GetMaxMoneySanFierro()));
                 }
                 else if (GetCurrentZone() == 2)
                 {
-                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneyLasVenturas()));
+                    m_player.addMoney(numRandom(1, m_NPC.GetMaxMoneyLasVenturas()));
                 }
             }
         }
@@ -279,15 +279,15 @@ void Game::PlayerInPut()
                 m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_RIGHT;
                 if (GetCurrentZone() == 0)
                 {
-                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneySantos()));
+                    m_player.addMoney(numRandom(1, m_NPC.GetMaxMoneySantos()));
                 }
                 else if (GetCurrentZone() == 1)
                 {
-                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneySanFierro()));
+                    m_player.addMoney(numRandom(1, m_NPC.GetMaxMoneySanFierro()));
                 }
                 else if (GetCurrentZone() == 2)
                 {
-                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneyLasVenturas()));
+                    m_player.addMoney(numRandom(1, m_NPC.GetMaxMoneyLasVenturas()));
                 }
             }
         }
@@ -326,15 +326,15 @@ void Game::PlayerInPut()
                 m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_DOWN;
                 if (GetCurrentZone() == 0)
                 {
-                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneySantos()));
+                    m_player.addMoney(numRandom(1, m_NPC.GetMaxMoneySantos()));
                 }
                 else if (GetCurrentZone() == 1)
                 {
-                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneySanFierro()));
+                    m_player.addMoney(numRandom(1, m_NPC.GetMaxMoneySanFierro()));
                 }
                 else if (GetCurrentZone() == 2)
                 {
-                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneyLasVenturas()));
+                    m_player.addMoney(numRandom(1, m_NPC.GetMaxMoneyLasVenturas()));
                 }
             }
         }
@@ -361,11 +361,11 @@ void Game::PlayerInPut()
             if (targetX >= 0 && targetX < m_map.getFilas() && targetY >= 0 && targetY < m_map.getColumnas() && (m_map.m_Type[targetX][targetY] == objectType::NPC || m_map.m_Type[targetX][targetY] == objectType::BIGSMOKE))
             {
                 // 1. Eliminar el NPC del array
-                for (int i = 0; i < m_NPC.getNPC(); i++)
+                for (int i = 0; i < m_NPC.GetNPC(); i++)
                 {
                     if (m_NPC.npc_PosX[i] == targetX && m_NPC.npc_PosY[i] == targetY)
                     {
-                        m_NPC.npcDamage(m_player.getPower(), i);
+                        m_NPC.NpcDamage(m_player.GetPower(), i);
                         if (m_NPC.npc_Alive[i] == false)
                         {
                             m_map.m_Type[targetX][targetY] = objectType::MONEY;
@@ -375,7 +375,7 @@ void Game::PlayerInPut()
                 }
                 if (m_map.m_Type[targetX][targetY] == objectType::BIGSMOKE)
                 {
-                    m_NPC.BsDamage(m_player.getPower());
+                    m_NPC.BsDamage(m_player.GetPower());
 
                 }
 
@@ -598,7 +598,7 @@ void Game::SetPlayer()
 }
 void Game::CreateNPC()
 {
-    for (int i = 0; i < m_NPC.getNpcLosSantos(); i++)
+    for (int i = 0; i < m_NPC.GetNpcLosSantos(); i++)
     {
         do 
         {
@@ -608,8 +608,8 @@ void Game::CreateNPC()
 
         m_map.m_Type[m_NPC.npc_PosX[i]][m_NPC.npc_PosY[i]] = objectType::NPC;
         m_NPC.npc_Alive[i] = true;
-		m_NPC.npc_Power[i] = m_NPC.getPowerNpcSantos();
-		m_NPC.npc_Life[i] = m_NPC.getLifeNpcSantos();
+		m_NPC.npc_Power[i] = m_NPC.GetPowerNpcSantos();
+		m_NPC.npc_Life[i] = m_NPC.GetLifeNpcSantos();
 		int Random = numRandom(0, 2);
         if (Random == 1)
         {
@@ -621,7 +621,7 @@ void Game::CreateNPC()
         }
 		
     }
-    for (int i = m_NPC.getNpcLosSantos(); i < (m_NPC.getNpcLosSantos() + m_NPC.getNpcSanFierro()); i++)
+    for (int i = m_NPC.GetNpcLosSantos(); i < (m_NPC.GetNpcLosSantos() + m_NPC.GetNpcSanFierro()); i++)
     {
         do
         {
@@ -631,8 +631,8 @@ void Game::CreateNPC()
 
         m_map.m_Type[m_NPC.npc_PosX[i]][m_NPC.npc_PosY[i]] = objectType::NPC;
         m_NPC.npc_Alive[i] = true;
-        m_NPC.npc_Power[i] = m_NPC.getPowerNpcSanFierro();
-        m_NPC.npc_Life[i] = m_NPC.getLifeNpcSanFierro();
+        m_NPC.npc_Power[i] = m_NPC.GetPowerNpcSanFierro();
+        m_NPC.npc_Life[i] = m_NPC.GetLifeNpcSanFierro();
         int Random = numRandom(0, 2);
         if (Random == 1)
         {
@@ -644,7 +644,7 @@ void Game::CreateNPC()
         }
         
     }
-    for (int i = m_NPC.getNpcLosSantos() + m_NPC.getNpcSanFierro(); i < (m_NPC.getNpcLosSantos() + m_NPC.getNpcSanFierro() + m_NPC.getNpcLasVenturas()); i++)
+    for (int i = m_NPC.GetNpcLosSantos() + m_NPC.GetNpcSanFierro(); i < (m_NPC.GetNpcLosSantos() + m_NPC.GetNpcSanFierro() + m_NPC.GetNpcLasVenturas()); i++)
     {
 		do
 		{
@@ -653,8 +653,8 @@ void Game::CreateNPC()
 		} while (m_map.m_Type[m_NPC.npc_PosX[i]][m_NPC.npc_PosY[i]] != objectType::DEFAULT);  // Asegura que solo spawnean en un lugar donde este vacio
 		m_map.m_Type[m_NPC.npc_PosX[i]][m_NPC.npc_PosY[i]] = objectType::NPC;
 		m_NPC.npc_Alive[i] = true;
-        m_NPC.npc_Power[i] = m_NPC.getPowerNpcLasVenturas();
-        m_NPC.npc_Life[i] = m_NPC.getLifeNpcLasVenturas();
+        m_NPC.npc_Power[i] = m_NPC.GetPowerNpcLasVenturas();
+        m_NPC.npc_Life[i] = m_NPC.GetLifeNpcLasVenturas();
         int Random = numRandom(0, 2);
         if (Random == 1)
         {
@@ -739,7 +739,7 @@ void Game::NPCMoviment()
 			}
 		}
     }
-        for (int p = 0; p < m_NPC.getNPC(); p++)
+        for (int p = 0; p < m_NPC.GetNPC(); p++)
         {
             if (m_NPC.npc_Alive[p] == true)
             {
@@ -751,7 +751,7 @@ void Game::NPCMoviment()
                         int  t = 0;
                         int checkPosX = m_player.getPosX() + i;
                         int checkPosY = m_player.getPosY() + j;
-                        while (t < m_NPC.getNPC())
+                        while (t < m_NPC.GetNPC())
                         {
                             if (m_NPC.npc_PosX[t] == checkPosX && m_NPC.npc_PosY[t] == checkPosY)
                             {
@@ -819,19 +819,19 @@ void Game::NPCMoviment()
                 {
                     if (GetCurrentZone() == 0)
                     {
-                        m_NPC.npc_Life[p] = m_NPC.getLifeNpcSantos();
+                        m_NPC.npc_Life[p] = m_NPC.GetLifeNpcSantos();
                         m_NPC.npc_PosX[p] = numRandom(1, m_map.getFilas() - 1);
                         m_NPC.npc_PosY[p] = numRandom(1, m_map.getLimitLosSantos() - 1);
                     }
                     else if (GetCurrentZone() == 1)
                     {
-                        m_NPC.npc_Life[p] = m_NPC.getLifeNpcSanFierro();
+                        m_NPC.npc_Life[p] = m_NPC.GetLifeNpcSanFierro();
                         m_NPC.npc_PosX[p] = numRandom(1, m_map.getFilas() - 1);
                         m_NPC.npc_PosY[p] = numRandom(m_map.getLimitLosSantos() + 1, m_map.getLimitSanFierro() - 1);
                     }
                     else if (GetCurrentZone() == 2)
                     {
-                        m_NPC.npc_Life[p] = m_NPC.getLifeNpcLasVenturas();
+                        m_NPC.npc_Life[p] = m_NPC.GetLifeNpcLasVenturas();
                         m_NPC.npc_PosX[p] = numRandom(1, m_map.getFilas() - 1);
                         m_NPC.npc_PosY[p] = numRandom(m_map.getLimitSanFierro() + 1, m_map.getColumnas() - 1);
                     }
@@ -848,7 +848,7 @@ void Game::NPCMoviment()
 }
 void Game::AttackNPC()
 {
-        for (int i = 0; i < m_NPC.getNPC(); i++)
+        for (int i = 0; i < m_NPC.GetNPC(); i++)
         {
             if (m_NPC.npc_Alive[i] == true)
             {
@@ -865,7 +865,7 @@ void Game::AttackNPC()
 }
 void Game::ResetGame()
 {
-	for (int i = 0; i < m_NPC.getNPC(); i++)
+	for (int i = 0; i < m_NPC.GetNPC(); i++)
 	{
 		m_map.m_Type[m_NPC.npc_PosX[i]][m_NPC.npc_PosY[i]] = objectType::DEFAULT;
 		m_NPC.npc_Alive[i] = false;

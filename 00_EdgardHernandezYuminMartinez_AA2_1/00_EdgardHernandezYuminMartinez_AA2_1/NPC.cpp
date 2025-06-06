@@ -1,9 +1,9 @@
 #include "Util.h"
 NPC::NPC(const FileRead& fileread)
 {
-	m_npcLosSantos = fileread.getNpcLosSantos();
-	m_maxMoneySantos = fileread.getMaxMoneySantos();
-	m_lifeNpcSantos = fileread.getLifeNpcSantos();
+	m_npcLosSantos = fileread.GetNpcLosSantos();
+	m_maxMoneySantos = fileread.GetMaxMoneySantos();
+	m_lifeNpcSantos = fileread.GetLifeNpcSantos();
 	m_powerNpcSantos = fileread.getPowerNpcSantos();
 	m_npcSanFierro = fileread.getNpcSanFierro();
 	m_maxMoneySanFierro = fileread.getMaxMoneySanFierro();
@@ -18,7 +18,7 @@ NPC::NPC(const FileRead& fileread)
 	
 
 }
-void NPC::npcDamage(int dmg, int index)
+void NPC::NpcDamage(int dmg, int index)
 {
 	npc_Life[index] -= dmg;
 	if (npc_Life[index] <= 0)

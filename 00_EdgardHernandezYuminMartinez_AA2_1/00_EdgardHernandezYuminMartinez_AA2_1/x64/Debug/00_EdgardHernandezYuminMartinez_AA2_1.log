@@ -1,3 +1,9 @@
 ﻿  Game.cpp
-C:\Users\Edgar Hernández\OneDrive - UNIR\Escritorio\HernandezEdgard_MartinezYumin_AA2_1\00_EdgardHernandezYuminMartinez_AA2_1\00_EdgardHernandezYuminMartinez_AA2_1\Game.cpp(46,1): warning C4715: 'Game::HandlePeaje': no todas las rutas de acceso de control devuelven un valor
-  00_EdgardHernandezYuminMartinez_AA2_1.vcxproj -> C:\Users\Edgar Hernández\OneDrive - UNIR\Escritorio\HernandezEdgard_MartinezYumin_AA2_1\00_EdgardHernandezYuminMartinez_AA2_1\x64\Debug\00_EdgardHernandezYuminMartinez_AA2_1.exe
+C:\Users\Usuario\Desktop\projecte\AA2_1\00_EdgardHernandezYuminMartinez_AA2_1\00_EdgardHernandezYuminMartinez_AA2_1\Game.cpp(368,50): error C2039: "GetPower": no es un miembro de "Player"
+      C:\Users\Usuario\Desktop\projecte\AA2_1\00_EdgardHernandezYuminMartinez_AA2_1\00_EdgardHernandezYuminMartinez_AA2_1\Player.h(3,7):
+      vea la declaración de 'Player'
+  
+C:\Users\Usuario\Desktop\projecte\AA2_1\00_EdgardHernandezYuminMartinez_AA2_1\00_EdgardHernandezYuminMartinez_AA2_1\Game.cpp(378,45): error C2039: "GetPower": no es un miembro de "Player"
+      C:\Users\Usuario\Desktop\projecte\AA2_1\00_EdgardHernandezYuminMartinez_AA2_1\00_EdgardHernandezYuminMartinez_AA2_1\Player.h(3,7):
+      vea la declaración de 'Player'
+  

@@ -9,7 +9,6 @@ int numRandom(int min, int max)
 
 void CleanScreen() {
 	system("cls");  
-
 }
 
 
@@ -64,7 +63,7 @@ int main()
 				}
 				else if (game.acrossNoMoney == true)
 				{
-					std::cout << "La policia te ha detenido  Game Over." << std::endl;
+					std::cout << "La policia te ha detenido!  Game Over." << std::endl;
 					Sleep(5000);
 				}
                 game.IsDead = true;

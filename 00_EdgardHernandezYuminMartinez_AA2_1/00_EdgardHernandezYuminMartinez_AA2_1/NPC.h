@@ -22,16 +22,16 @@ class NPC
 	int timeToHit = 1000; 
 
 	int bsPower = 45;
-
+	static const int s_numNpc = 31;
 
 public:
-	int npc_PosX[31];
-	int npc_PosY[31];
-	int npc_Power[31];
-	int npc_Life[31];
-	bool npc_Alive[31];
-	bool npc_neutral[31];
-	bool npc_Attacked[31] = { false };
+	int npc_PosX[s_numNpc];
+	int npc_PosY[s_numNpc];
+	int npc_Power[s_numNpc];
+	int npc_Life[s_numNpc];
+	bool npc_Alive[s_numNpc];
+	bool npc_neutral[s_numNpc];
+	bool npc_Attacked[s_numNpc] = { false };
 	
 	int bsLife = 500;
 	int bs_PosX;
@@ -41,21 +41,60 @@ public:
 	NPC();
     NPC(const FileRead&);
 	
-	int getNpcLosSantos() const { return m_npcLosSantos; }
-	int getMaxMoneySantos() const { return m_maxMoneySantos; }
-	int getLifeNpcSantos() const { return m_lifeNpcSantos; }
-	int getPowerNpcSantos() const { return m_powerNpcSantos; }
+	int GetNpcLosSantos() const 
+	{
+		return m_npcLosSantos;
+	}
+	int GetMaxMoneySantos() const
+	{ 
+		return m_maxMoneySantos;
+	}
+	int GetLifeNpcSantos() const
+	{ 
+		return m_lifeNpcSantos; 
+	}
+	int GetPowerNpcSantos() const
+	{ 
+		return m_powerNpcSantos;
+	}
 
-	int getNpcSanFierro() const { return m_npcSanFierro; }
-	int getMaxMoneySanFierro() const { return m_maxMoneySanFierro; }
-	int getLifeNpcSanFierro() const { return m_lifeNpcSanFierro; }
-	int getPowerNpcSanFierro() const { return m_powerNpcSanFierro; }
+	int GetNpcSanFierro() const 
+	{
+		return m_npcSanFierro;
+	}
+	int GetMaxMoneySanFierro() const 
+	{ 
+		return m_maxMoneySanFierro; 
+	}
+	int GetLifeNpcSanFierro() const
+	{ 
+		return m_lifeNpcSanFierro;
+	}
+	int GetPowerNpcSanFierro() const 
+	{ 
+		return m_powerNpcSanFierro;
+	}
 
-	int getNpcLasVenturas() const { return m_npcLasVenturas; }
-	int getMaxMoneyLasVenturas() const { return m_maxMoneyLasVenturas; }
-	int getLifeNpcLasVenturas() const { return m_lifeNpcLasVenturas; }
-	int getPowerNpcLasVenturas() const { return m_powerNpcLasVenturas; }
-	int getNPC() const { return m_npcTotal; }
+	int GetNpcLasVenturas() const 
+	{ 
+		return m_npcLasVenturas;
+	}
+	int GetMaxMoneyLasVenturas() const 
+	{ 
+		return m_maxMoneyLasVenturas;
+	}
+	int GetLifeNpcLasVenturas() const 
+	{ 
+		return m_lifeNpcLasVenturas;
+	}
+	int GetPowerNpcLasVenturas() const 
+	{
+		return m_powerNpcLasVenturas; 
+	}
+	int GetNPC() const 
+	{ 
+		return m_npcTotal; 
+	}
 
 	void ResetBs()
 	{
@@ -63,12 +102,21 @@ public:
 		bsAlife = true;
 		bsAttacked = false;
 	}
-	int getBSLife() const { return bsLife; }
-	int getBSPower() const { return bsPower; }
+	int getBSLife() const 
+	{ 
+		return bsLife;
+	}
+	int getBSPower() const 
+	{ 
+		return bsPower;
+	}
 
-	int GetTimeToHit() const { return timeToHit; }
+	int GetTimeToHit() const 
+	{ 
+		return timeToHit; 
+	}
 	
-	void npcDamage(int, int);
+	void NpcDamage(int, int);
 	void BsDamage(int);
 
 };

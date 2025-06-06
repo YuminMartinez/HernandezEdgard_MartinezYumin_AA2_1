@@ -3,20 +3,23 @@ class Car
 {
 private:
 	// Coches en cada ciudad
-	int NumCarSantos = 3;
-	int NumCarSanFierro = 3;
-	int NumCarLasVenturas = 3;
+	int numCarSantos = 3;
+	int numCarSanFierro = 3;
+	int numCarLasVenturas = 3;
 public:
 
-	int GetNumCarSanFierro() const {
-		return NumCarSanFierro;
+	int GetNumCarSanFierro() const 
+	{
+		return numCarSanFierro;
 	}
-	int GetNumCarSantos() const {
-		return NumCarSantos;
+	int GetNumCarSantos() const 
+	{
+		return numCarSantos;
 	}
 
-	int GetNumCarLasVenturas() const {
-		return NumCarLasVenturas;
+	int GetNumCarLasVenturas() const
+	{
+		return numCarLasVenturas;
 	}
 
 };

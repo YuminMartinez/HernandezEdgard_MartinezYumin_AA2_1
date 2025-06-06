@@ -101,31 +101,31 @@ public:
 		}
 	}
 
-	int getFilas() const { return filas; }
-	int getColumnas() const { return columnas; }
+	int GetFilas() const { return filas; }
+	int GetColumnas() const { return columnas; }
 
-	int getLifeCJ() const { return lifeCJ; }
-	int getPowerCJ() const { return powerCJ; }
+	int GetLifeCJ() const { return lifeCJ; }
+	int GetPowerCJ() const { return powerCJ; }
 
-	int getTotalToSanFierro() const { return totalToSanFierro; }
-	int getTotalToLasVenturas() const { return totalToLasVenturas; }
+	int GetTotalToSanFierro() const { return totalToSanFierro; }
+	int GetTotalToLasVenturas() const { return totalToLasVenturas; }
 
-	int getNpcLosSantos() const { return npcLosSantos; }
-	int getMaxMoneySantos() const { return maxMoneySantos; }
-	int getLifeNpcSantos() const { return lifeNpcSantos; }
-	int getPowerNpcSantos() const { return powerNpcSantos; }
+	int GetNpcLosSantos() const { return npcLosSantos; }
+	int GetMaxMoneySantos() const { return maxMoneySantos; }
+	int GetLifeNpcSantos() const { return lifeNpcSantos; }
+	int GetPowerNpcSantos() const { return powerNpcSantos; }
 
-	int getNpcSanFierro() const { return npcSanFierro; }
-	int getMaxMoneySanFierro() const { return maxMoneySanFierro; }
-	int getLifeNpcSanFierro() const { return lifeNpcSanFierro; }
-	int getPowerNpcSanFierro() const { return powerNpcSanFierro; }
+	int GetNpcSanFierro() const { return npcSanFierro; }
+	int GetMaxMoneySanFierro() const { return maxMoneySanFierro; }
+	int GetLifeNpcSanFierro() const { return lifeNpcSanFierro; }
+	int GetPowerNpcSanFierro() const { return powerNpcSanFierro; }
 
-	int getNpcLasVenturas() const { return npcLasVenturas; }
-	int getMaxMoneyLasVenturas() const { return maxMoneyLasVenturas; }
-	int getLifeNpcLasVenturas() const { return lifeNpcLasVenturas; }
-	int getPowerNpcLasVenturas() const { return powerNpcLasVenturas; }
+	int GetNpcLasVenturas() const { return npcLasVenturas; }
+	int GetMaxMoneyLasVenturas() const { return maxMoneyLasVenturas; }
+	int GetLifeNpcLasVenturas() const { return lifeNpcLasVenturas; }
+	int GetPowerNpcLasVenturas() const { return powerNpcLasVenturas; }
 
-	int getLimitLosSantos() const { return limitLosSantos; }
+	int GetLimitLosSantos() const { return limitLosSantos; }
 	int getLimitSanFierro() const { return limitSanFierro; }
 
 	int getTotalNpc() const { return totalNpc; }
