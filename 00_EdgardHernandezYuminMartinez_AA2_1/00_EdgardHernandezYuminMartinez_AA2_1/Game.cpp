@@ -73,9 +73,18 @@ void Game::PlayerInPut()
                 m_map.m_Type[x][y] = objectType::DEFAULT;
                 m_player.moveLeft();
                 m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_LEFT;
-                m_player.addMoney(numRandom(1, m_NPC.getMaxMoneySantos()));
-
-
+                if (MapPos == 0)
+                {
+                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneySantos()));
+				}
+				else if (MapPos == 1)
+				{
+					m_player.addMoney(numRandom(1, m_NPC.getMaxMoneySanFierro()));
+				}
+                else if (MapPos == 2)
+                {
+                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneyLasVenturas()));
+                }
             }
         }// se mueve hacia izquierda
         else if (GetAsyncKeyState(VK_UP) & 0x8000 && y > 0)
@@ -92,7 +101,18 @@ void Game::PlayerInPut()
                 m_player.moveForward();
 
                 m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_UP;
-                m_player.addMoney( numRandom(1, m_NPC.getMaxMoneySantos()));
+                if (MapPos == 0)
+                {
+                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneySantos()));
+                }
+                else if (MapPos == 1)
+                {
+                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneySanFierro()));
+                }
+                else if (MapPos == 2)
+                {
+                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneyLasVenturas()));
+                }
             }
         }// se mueve hacia atras
         else if (GetAsyncKeyState(VK_RIGHT) & 0x8000 && x < m_map.getFilas() - 1)
@@ -109,7 +129,18 @@ void Game::PlayerInPut()
                 m_map.m_Type[x][y] = objectType::DEFAULT;
                 m_player.moveRight();
                 m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_RIGHT;
-                m_player.addMoney( numRandom(1, m_NPC.getMaxMoneySantos()));
+                if (MapPos == 0)
+                {
+                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneySantos()));
+                }
+                else if (MapPos == 1)
+                {
+                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneySanFierro()));
+                }
+                else if (MapPos == 2)
+                {
+                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneyLasVenturas()));
+                }
 
             }
         }// se mueve hacia derecha
@@ -127,7 +158,18 @@ void Game::PlayerInPut()
                 m_map.m_Type[x][y] = objectType::DEFAULT;
                 m_player.moveBack();
                 m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::PLAYER_DOWN;
-                m_player.addMoney( numRandom(1, m_NPC.getMaxMoneySantos()));
+                if (MapPos == 0)
+                {
+                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneySantos()));
+                }
+                else if (MapPos == 1)
+                {
+                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneySanFierro()));
+                }
+                else if (MapPos == 2)
+                {
+                    m_player.addMoney(numRandom(1, m_NPC.getMaxMoneyLasVenturas()));
+                }
             }
 
         }
@@ -156,11 +198,15 @@ void Game::PlayerInPut()
                     {
                         if (m_NPC.npc_PosX[i] == targetX && m_NPC.npc_PosY[i] == targetY)
                         {
-                            m_NPC.npc_Alive[i] = false;
+							m_NPC.npcDamage(m_player.getPower(), i); 
+                            if (m_NPC.npc_Alive[i] == false)
+                            {
+                                m_map.m_Type[targetX][targetY] = objectType::MONEY;
+                            }
                             break;
                         }
                     }
-                    m_map.m_Type[targetX][targetY] = objectType::MONEY;
+                    
                 }
             }
         }
@@ -265,7 +311,7 @@ void Game::PrintMap() const
 	std::cout << "\nVidaCJ: " << m_player.getLife() << std::endl;
     
     
-    /*for (int i = 0; i < m_map.getFilas(); ++i) {
+   /* for (int i = 0; i < m_map.getFilas(); ++i) {
         for (int j = 0; j < m_map.getColumnas(); ++j) {
             switch (m_map.m_Type[i][j]) {
             case objectType::LIMIT: std::cout << "X"; break;
@@ -365,12 +411,12 @@ void Game::CreateNPC()
 }
 void Game::NPCMoviment()
 {
-   
+    
         for (int p = 0; p < m_NPC.getNPC(); p++)
         {
             if (m_NPC.npc_Alive[p] == true)
             {
-                bool playerInRange[24] = { false };
+                bool playerInRange[31] = { false };
                 for (int i = -1; i <= 1; i++)
                 {
                     for (int j = -1; j <= 1; j++)
@@ -388,58 +434,57 @@ void Game::NPCMoviment()
                         }
                     }
                 }
-                for (int totalNPC = 0; totalNPC < m_NPC.getNPC(); totalNPC++)
+
+                if (playerInRange[p] == false)
                 {
-                    if (playerInRange[totalNPC] == false)
+                    bool moved = false;
+                    int intentos = 0;
+                    while (!moved && intentos < 10)
                     {
-                        bool moved = false;
-                        int intentos = 0;
-                        while (!moved && intentos < 10)
+                        int newX = m_NPC.npc_PosX[p];
+                        int newY = m_NPC.npc_PosY[p];
+                        int randomMoviment = numRandom(1, 4);
+
+                        switch (randomMoviment)
                         {
-                            int newX = m_NPC.npc_PosX[totalNPC];
-                            int newY = m_NPC.npc_PosY[totalNPC];
-                            int randomMoviment = numRandom(1, 4);
-
-                            switch (randomMoviment)
-                            {
-                            case 1: // Arriba
-                                newX--;
-                                break;
-                            case 2: // Abajo
-                                newX++;
-                                break;
-                            case 3: // Izquierda
-                                newY--;
-                                break;
-                            case 4: // Derecha
-                                newY++;
-                                break;
-                            }
-                            int limiteX = m_map.getFilas() - 1;
-                            int limiteY = m_map.getColumnas() - 1;
-                            // Verifica que la posición nueva esté dentro del mapa
-                            if (newX >= 0 && newX < limiteX && newY >= 0 && newY < limiteY)
-                            {
-                                // Verifica que la casilla esté vacía
-                                if (m_map.m_Type[newX][newY] == objectType::DEFAULT)
-                                {
-                                    // Libera la casilla anterior
-                                    m_map.m_Type[m_NPC.npc_PosX[totalNPC]][m_NPC.npc_PosY[totalNPC]] = objectType::DEFAULT;
-
-                                    // Actualiza posición
-                                    m_NPC.npc_PosX[totalNPC] = newX;
-                                    m_NPC.npc_PosY[totalNPC] = newY;
-
-                                    // Marca la casilla como NPC
-                                    m_map.m_Type[newX][newY] = objectType::NPC;
-
-                                    moved = true;
-                                }
-                            }
-                            intentos++;
+                        case 1: // Arriba
+                            newX--;
+                            break;
+                        case 2: // Abajo
+                            newX++;
+                            break;
+                        case 3: // Izquierda
+                            newY--;
+                            break;
+                        case 4: // Derecha
+                            newY++;
+                            break;
                         }
+                        int limiteX = m_map.getFilas() - 1;
+                        int limiteY = m_map.getColumnas() - 1;
+                        // Verifica que la posición nueva esté dentro del mapa
+                        if (newX >= 0 && newX < limiteX && newY >= 0 && newY < limiteY)
+                        {
+                            // Verifica que la casilla esté vacía
+                            if (m_map.m_Type[newX][newY] == objectType::DEFAULT)
+                            {
+                                // Libera la casilla anterior
+                                m_map.m_Type[m_NPC.npc_PosX[p]][m_NPC.npc_PosY[p]] = objectType::DEFAULT;
+
+                                // Actualiza posición
+                                m_NPC.npc_PosX[p] = newX;
+                                m_NPC.npc_PosY[p] = newY;
+
+                                // Marca la casilla como NPC
+                                m_map.m_Type[newX][newY] = objectType::NPC;
+
+                                moved = true;
+                            }
+                        }
+                        intentos++;
                     }
                 }
+
             }
             else
             {
@@ -451,12 +496,12 @@ void Game::NPCMoviment()
                         m_NPC.npc_PosX[p] = numRandom(1, m_map.getFilas() - 1);
                         m_NPC.npc_PosY[p] = numRandom(1, m_map.getLimitLosSantos() - 1);
                     }
-					else if (MapPos == 1)
-					{
-						m_NPC.npc_Life[p] = m_NPC.getLifeNpcSanFierro();
-						m_NPC.npc_PosX[p] = numRandom(1, m_map.getFilas() - 1);
-						m_NPC.npc_PosY[p] = numRandom(m_map.getLimitLosSantos() + 1, m_map.getLimitSanFierro() - 1);
-					}
+                    else if (MapPos == 1)
+                    {
+                        m_NPC.npc_Life[p] = m_NPC.getLifeNpcSanFierro();
+                        m_NPC.npc_PosX[p] = numRandom(1, m_map.getFilas() - 1);
+                        m_NPC.npc_PosY[p] = numRandom(m_map.getLimitLosSantos() + 1, m_map.getLimitSanFierro() - 1);
+                    }
                     else if (MapPos == 2)
                     {
                         m_NPC.npc_Life[p] = m_NPC.getLifeNpcLasVenturas();
@@ -467,11 +512,27 @@ void Game::NPCMoviment()
 
                 m_map.m_Type[m_NPC.npc_PosX[p]][m_NPC.npc_PosY[p]] = objectType::NPC;
                 m_NPC.npc_Alive[p] = true;
+                m_NPC.npc_Attacked[p] = false;
             }
         }
         
     
+    
 }
+void Game::AttackNPC()
+{
+        for (int i = 0; i < m_NPC.getNPC(); i++)
+        {
+            if (m_NPC.npc_Alive[i] == true)
+            {
+                if (m_NPC.npc_Attacked[i] == true)
+                {
+                    m_player.RecieveDamage(m_NPC.npc_Power[i]);
+                }
+            }
+        }
+}
+
 Game::~Game()
 {
 

@@ -4,7 +4,7 @@ Player::Player()
 {
 	//m_PosX = numRandom(1, m_map.getFilas() - 1);
 	//m_PosY = numRandom(1, m_map.getLimitLosSantos() - 1);
-
+	cjDead = false;
 }
 void Player::SetPos(int posX, int posY)
 {
@@ -35,4 +35,12 @@ void Player::moveRight()
 { 
 	m_PosY++;
 	
+}
+void Player::RecieveDamage(int damage)
+{
+	life -= damage;
+	if (life < 0)
+	{
+		cjDead = true;// Asegurarse de que la vida no sea negativa
+	}
 }

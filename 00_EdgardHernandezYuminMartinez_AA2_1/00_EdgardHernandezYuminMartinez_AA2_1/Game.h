@@ -5,6 +5,8 @@
 #include "Map.h"
 #include "Car.h"
 #include "FileRead.h"
+#include <chrono>
+#include <thread>
 class Game
 {
 
@@ -26,6 +28,7 @@ public:
 		CreateNPC();
 		
 	}
+	
 	int MapPos = 0; // 0 = Los Santos, 1 = San Fierro, 2 = Las Venturas
 	int menuOption = 0;
 	int iteration = 0; // Contador de iteraciones para el movimiento de NPCs
@@ -51,6 +54,7 @@ public:
 	void PrintMap() const;
 	void CreateNPC();
 	void NPCMoviment();
+	void AttackNPC();
 	~Game();
 };
 

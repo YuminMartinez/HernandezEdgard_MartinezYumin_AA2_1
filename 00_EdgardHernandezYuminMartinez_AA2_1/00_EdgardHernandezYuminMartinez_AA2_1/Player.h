@@ -10,7 +10,7 @@ private:
 	int playerView_Heigh = 11;
 	int life;
 	int power;
-	
+	bool cjDead = false; 
 public:
 	Player();
 	
@@ -44,7 +44,10 @@ public:
 	{
 		return power;
 	}
-
+	bool GetCJDead() const
+	{
+		return cjDead;
+	}
 	void StatsCJ(int, int);
 	//Setterss
 	void addMoney(int amount) {
@@ -69,5 +72,6 @@ public:
 	void moveBack();
 	void moveRight();
 	void SetPos(int, int);
+	void RecieveDamage(int);
 	
 };

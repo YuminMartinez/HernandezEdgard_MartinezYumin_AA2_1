@@ -19,7 +19,7 @@ class NPC
     int m_lifeNpcLasVenturas;
     int m_powerNpcLasVenturas;
 	int m_npcTotal;
-
+	int timeToHit = 1000; 
 public:
 	NPC();
     NPC(const FileRead&);
@@ -39,13 +39,17 @@ public:
 	int getLifeNpcLasVenturas() const { return m_lifeNpcLasVenturas; }
 	int getPowerNpcLasVenturas() const { return m_powerNpcLasVenturas; }
 	int getNPC() const { return m_npcTotal; }
+
+	int GetTimeToHit() const { return timeToHit; }
 	int npc_PosX[31];
 	int npc_PosY[31];
 	int npc_Power[31];
 	int npc_Life[31];
 	bool npc_Alive[31];
 	bool npc_neutral[31];
+	bool npc_Attacked[31] = { false }; 
 	void npcDamage(int, int);
-	void npcAttack(int);
+	
+
 };
 

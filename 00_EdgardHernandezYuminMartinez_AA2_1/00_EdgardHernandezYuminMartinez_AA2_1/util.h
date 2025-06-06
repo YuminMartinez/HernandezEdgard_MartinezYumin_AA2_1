@@ -6,7 +6,8 @@
 #include "Map.h"
 #include "Player.h"
 #include "NPC.h"
-
+#include <chrono>
+#include <thread>
 enum class objectType;
 
 int numRandom(int min, int max);
