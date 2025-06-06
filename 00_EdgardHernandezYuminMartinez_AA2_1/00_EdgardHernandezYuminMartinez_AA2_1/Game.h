@@ -26,7 +26,7 @@ public:
 		CreateNPC();
 		
 	}
-	
+	int MapPos = 0; // 0 = Los Santos, 1 = San Fierro, 2 = Las Venturas
 	int menuOption = 0;
 	int iteration = 0; // Contador de iteraciones para el movimiento de NPCs
 	bool finish = false;

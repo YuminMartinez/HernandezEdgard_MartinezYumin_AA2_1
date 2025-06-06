@@ -19,6 +19,7 @@ class NPC
     int m_lifeNpcLasVenturas;
     int m_powerNpcLasVenturas;
 	int m_npcTotal;
+
 public:
 	NPC();
     NPC(const FileRead&);
@@ -40,7 +41,11 @@ public:
 	int getNPC() const { return m_npcTotal; }
 	int npc_PosX[31];
 	int npc_PosY[31];
+	int npc_Power[31];
+	int npc_Life[31];
 	bool npc_Alive[31];
-	
+	bool npc_neutral[31];
+	void npcDamage(int, int);
+	void npcAttack(int);
 };
 

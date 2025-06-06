@@ -18,4 +18,13 @@ NPC::NPC(const FileRead& fileread)
 	
 
 }
+void NPC::npcDamage(int dmg, int index)
+{
+	npc_Life[index] -= dmg;
+	if (npc_Life[index] >= 0)
+	{
+		npc_Alive[index] = false;
+		npc_Life[index] = 0;
+	}
+}
 

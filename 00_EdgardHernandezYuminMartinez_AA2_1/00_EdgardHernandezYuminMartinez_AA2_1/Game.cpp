@@ -47,6 +47,19 @@ void Game::PlayerInPut()
     int x = m_player.getPosX();
     int y = m_player.getPosY();
       // se mueve hacia delante
+    if (m_player.getPosY() < m_map.getLimitLosSantos())
+    {
+		MapPos = 0; // Los Santos
+    }
+    else if (m_player.getPosY() >= m_map.getLimitLosSantos() && m_player.getPosY() < m_map.getLimitSanFierro())
+    {
+		MapPos = 1; // San Fierro
+    }
+    else if (m_player.getPosY() >= m_map.getLimitSanFierro())
+    {
+		MapPos = 2; // Las Venturas
+    }
+    
         if (GetAsyncKeyState(VK_LEFT) & 0x8000 && y > 0)
         {
             if (m_map.m_Type[x][y - 1] == objectType::DEFAULT || m_map.m_Type[x][y - 1] == objectType::PEAJE)
@@ -291,7 +304,18 @@ void Game::CreateNPC()
 
         m_map.m_Type[m_NPC.npc_PosX[i]][m_NPC.npc_PosY[i]] = objectType::NPC;
         m_NPC.npc_Alive[i] = true;
-		
+		m_NPC.npc_Power[i] = m_NPC.getPowerNpcSantos();
+		m_NPC.npc_Life[i] = m_NPC.getLifeNpcSantos();
+		int Random = numRandom(0, 2);
+        if (Random == 1)
+        {
+			m_NPC.npc_neutral[i] = true; 
+		}
+        else
+        {
+            m_NPC.npc_neutral[i] = false;
+        }
+		std::cout << "NPC " << i << " creado en (" << m_NPC.npc_PosX[i] << ", " << m_NPC.npc_PosY[i] << ")" << " Vida: " << m_NPC.npc_Life[i] << " Poder: " << m_NPC.npc_Power[i]<< std::endl;
     }
     for (int i = m_NPC.getNpcLosSantos(); i < (m_NPC.getNpcLosSantos() + m_NPC.getNpcSanFierro()); i++)
     {
@@ -303,7 +327,18 @@ void Game::CreateNPC()
 
         m_map.m_Type[m_NPC.npc_PosX[i]][m_NPC.npc_PosY[i]] = objectType::NPC;
         m_NPC.npc_Alive[i] = true;
-        
+        m_NPC.npc_Power[i] = m_NPC.getPowerNpcSanFierro();
+        m_NPC.npc_Life[i] = m_NPC.getLifeNpcSanFierro();
+        int Random = numRandom(0, 2);
+        if (Random == 1)
+        {
+            m_NPC.npc_neutral[i] = true;
+        }
+        else
+        {
+            m_NPC.npc_neutral[i] = false;
+        }
+        std::cout << "NPC " << i << " creado en (" << m_NPC.npc_PosX[i] << ", " << m_NPC.npc_PosY[i] << ")" << " Vida: " << m_NPC.npc_Life[i] << " Poder: " << m_NPC.npc_Power[i] << std::endl;
     }
     for (int i = m_NPC.getNpcLosSantos() + m_NPC.getNpcSanFierro(); i < (m_NPC.getNpcLosSantos() + m_NPC.getNpcSanFierro() + m_NPC.getNpcLasVenturas()); i++)
     {
@@ -314,7 +349,18 @@ void Game::CreateNPC()
 		} while (m_map.m_Type[m_NPC.npc_PosX[i]][m_NPC.npc_PosY[i]] != objectType::DEFAULT);  // Asegura que solo spawnean en un lugar donde este vacio
 		m_map.m_Type[m_NPC.npc_PosX[i]][m_NPC.npc_PosY[i]] = objectType::NPC;
 		m_NPC.npc_Alive[i] = true;
-        
+        m_NPC.npc_Power[i] = m_NPC.getPowerNpcLasVenturas();
+        m_NPC.npc_Life[i] = m_NPC.getLifeNpcLasVenturas();
+        int Random = numRandom(0, 2);
+        if (Random == 1)
+        {
+            m_NPC.npc_neutral[i] = true;
+        }
+        else
+        {
+            m_NPC.npc_neutral[i] = false;
+        }
+        std::cout << "NPC " << i << " creado en (" << m_NPC.npc_PosX[i] << ", " << m_NPC.npc_PosY[i] << ")" << " Vida: " << m_NPC.npc_Life[i] << " Poder: " << m_NPC.npc_Power[i] << std::endl;
     }
 }
 void Game::NPCMoviment()
@@ -399,8 +445,24 @@ void Game::NPCMoviment()
             {
                 do
                 {
-                    m_NPC.npc_PosX[p] = numRandom(1, m_map.getFilas() - 1);
-                    m_NPC.npc_PosY[p] = numRandom(1, m_map.getLimitLosSantos() - 1);
+                    if (MapPos == 0)
+                    {
+                        m_NPC.npc_Life[p] = m_NPC.getLifeNpcSantos();
+                        m_NPC.npc_PosX[p] = numRandom(1, m_map.getFilas() - 1);
+                        m_NPC.npc_PosY[p] = numRandom(1, m_map.getLimitLosSantos() - 1);
+                    }
+					else if (MapPos == 1)
+					{
+						m_NPC.npc_Life[p] = m_NPC.getLifeNpcSanFierro();
+						m_NPC.npc_PosX[p] = numRandom(1, m_map.getFilas() - 1);
+						m_NPC.npc_PosY[p] = numRandom(m_map.getLimitLosSantos() + 1, m_map.getLimitSanFierro() - 1);
+					}
+                    else if (MapPos == 2)
+                    {
+                        m_NPC.npc_Life[p] = m_NPC.getLifeNpcLasVenturas();
+                        m_NPC.npc_PosX[p] = numRandom(1, m_map.getFilas() - 1);
+                        m_NPC.npc_PosY[p] = numRandom(m_map.getLimitSanFierro() + 1, m_map.getColumnas() - 1);
+                    }
                 } while (m_map.m_Type[m_NPC.npc_PosX[p]][m_NPC.npc_PosY[p]] != objectType::DEFAULT);  // Asegura que solo spawnean en un lugar donde este vacio
 
                 m_map.m_Type[m_NPC.npc_PosX[p]][m_NPC.npc_PosY[p]] = objectType::NPC;
