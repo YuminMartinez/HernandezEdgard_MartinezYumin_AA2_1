@@ -29,8 +29,17 @@ void NPC::npcDamage(int dmg, int index)
 	}
 	if (npc_neutral[index] == false)
 	{
-		npc_Attacked[index] = true; // Marcar como atacado si no es neutral
+		npc_Attacked[index] = true; 
 	}
+}
+void NPC::BsDamage(int dmg)
+{
+	bsLife -= dmg;
+	bsAttacked = true; 
+	if (bsLife <= 0)
+	{
+		bsAlife = false;
+	}	
 }
 
 

@@ -35,6 +35,8 @@ public:
 	bool finish = false;
 	bool startGame = false;
 	bool IsDead = true;
+	void ResetGame();
+	
 	Player getPlayer() 
 	{ 
 		return m_player;

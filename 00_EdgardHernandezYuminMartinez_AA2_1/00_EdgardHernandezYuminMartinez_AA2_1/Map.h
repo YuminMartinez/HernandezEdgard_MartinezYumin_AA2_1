@@ -13,6 +13,7 @@ enum class objectType
     LIMIT,
     CAR,
     PEAJE,
+    BIGSMOKE,
 	DEFAULT
 };
 class Map 

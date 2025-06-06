@@ -66,7 +66,10 @@ public:
 		m_PosY = positionY;
 	}
 
-
+	void ResetLife()
+	{
+		life = 100; // Valor inicial de vida
+	}
 	void moveForward();
 	void moveLeft();
 	void moveBack();

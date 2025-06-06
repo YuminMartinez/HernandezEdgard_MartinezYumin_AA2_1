@@ -3,40 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|solutionrelative:00_EdgardHernandezYuminMartinez_AA2_1\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|solutionrelative:00_EdgardHernandezYuminMartinez_AA2_1\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|solutionrelative:00_EdgardHernandezYuminMartinez_AA2_1\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|solutionrelative:00_EdgardHernandezYuminMartinez_AA2_1\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|solutionrelative:00_EdgardHernandezYuminMartinez_AA2_1\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|solutionrelative:00_EdgardHernandezYuminMartinez_AA2_1\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Map.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|solutionrelative:00_EdgardHernandezYuminMartinez_AA2_1\\Map.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\FileRead.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:00_EdgardHernandezYuminMartinez_AA2_1\\FileRead.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|solutionrelative:00_EdgardHernandezYuminMartinez_AA2_1\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\NPC.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|solutionrelative:00_EdgardHernandezYuminMartinez_AA2_1\\NPC.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|solutionrelative:00_EdgardHernandezYuminMartinez_AA2_1\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Util.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|solutionrelative:00_EdgardHernandezYuminMartinez_AA2_1\\Util.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|solutionrelative:00_EdgardHernandezYuminMartinez_AA2_1\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\NPC.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CEB767AB-6B26-473F-84AC-041998D21DA6}|00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1.vcxproj|solutionrelative:00_EdgardHernandezYuminMartinez_AA2_1\\NPC.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\FileRead.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:00_EdgardHernandezYuminMartinez_AA2_1\\FileRead.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,17 +46,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "NPC.cpp",
               "DocumentMoniker": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\NPC.cpp",
               "RelativeDocumentMoniker": "00_EdgardHernandezYuminMartinez_AA2_1\\NPC.cpp",
               "ToolTip": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\NPC.cpp",
               "RelativeToolTip": "00_EdgardHernandezYuminMartinez_AA2_1\\NPC.cpp",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-05-09T17:17:36.771Z",
               "IsPinned": true,
@@ -64,13 +64,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "Game.h",
               "DocumentMoniker": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Game.h",
               "RelativeDocumentMoniker": "00_EdgardHernandezYuminMartinez_AA2_1\\Game.h",
               "ToolTip": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Game.h",
               "RelativeToolTip": "00_EdgardHernandezYuminMartinez_AA2_1\\Game.h",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB4AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACUAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-06-05T09:38:20.624Z",
               "IsPinned": true,
@@ -78,15 +78,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Game.cpp",
               "DocumentMoniker": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Game.cpp",
               "RelativeDocumentMoniker": "00_EdgardHernandezYuminMartinez_AA2_1\\Game.cpp",
               "ToolTip": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Game.cpp",
               "RelativeToolTip": "00_EdgardHernandezYuminMartinez_AA2_1\\Game.cpp",
-              "ViewState": "AgIAAKYBAAAAAAAAAAAAAKEBAAANAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAFYBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-06T14:07:17.847Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Main.cpp",
+              "DocumentMoniker": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\main.cpp",
+              "RelativeDocumentMoniker": "00_EdgardHernandezYuminMartinez_AA2_1\\main.cpp",
+              "ToolTip": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\main.cpp",
+              "RelativeToolTip": "00_EdgardHernandezYuminMartinez_AA2_1\\main.cpp",
+              "ViewState": "AgIAACcAAAAAAAAAAAAIwEsAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-05T10:55:55.703Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
@@ -96,72 +110,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Util.h",
-              "DocumentMoniker": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\util.h",
-              "RelativeDocumentMoniker": "00_EdgardHernandezYuminMartinez_AA2_1\\util.h",
-              "ToolTip": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\util.h",
-              "RelativeToolTip": "00_EdgardHernandezYuminMartinez_AA2_1\\util.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-06-06T14:56:59.798Z",
+              "DocumentIndex": 3,
+              "Title": "Map.cpp",
+              "DocumentMoniker": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Map.cpp",
+              "RelativeDocumentMoniker": "00_EdgardHernandezYuminMartinez_AA2_1\\Map.cpp",
+              "ToolTip": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Map.cpp",
+              "RelativeToolTip": "00_EdgardHernandezYuminMartinez_AA2_1\\Map.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-06T17:30:22.025Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "Player.h",
               "DocumentMoniker": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Player.h",
               "RelativeDocumentMoniker": "00_EdgardHernandezYuminMartinez_AA2_1\\Player.h",
               "ToolTip": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Player.h",
               "RelativeToolTip": "00_EdgardHernandezYuminMartinez_AA2_1\\Player.h",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAAEsAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-06-06T14:10:59.012Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "NPC.h",
               "DocumentMoniker": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\NPC.h",
               "RelativeDocumentMoniker": "00_EdgardHernandezYuminMartinez_AA2_1\\NPC.h",
               "ToolTip": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\NPC.h",
               "RelativeToolTip": "00_EdgardHernandezYuminMartinez_AA2_1\\NPC.h",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABMAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAmwDsAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-06-05T09:38:16.162Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Main.cpp",
-              "DocumentMoniker": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\main.cpp",
-              "RelativeDocumentMoniker": "00_EdgardHernandezYuminMartinez_AA2_1\\main.cpp",
-              "ToolTip": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\main.cpp",
-              "RelativeToolTip": "00_EdgardHernandezYuminMartinez_AA2_1\\main.cpp",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAACkAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-06-05T10:55:55.703Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "Player.cpp",
               "DocumentMoniker": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Player.cpp",
               "RelativeDocumentMoniker": "00_EdgardHernandezYuminMartinez_AA2_1\\Player.cpp",
               "ToolTip": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\Player.cpp",
               "RelativeToolTip": "00_EdgardHernandezYuminMartinez_AA2_1\\Player.cpp",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAgwCoAAAACAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-05T10:45:52.128Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 4,
               "Title": "FileRead.cpp",
               "DocumentMoniker": "C:\\Users\\Edgar Hern\u00E1ndez\\OneDrive - UNIR\\Escritorio\\AQui\\AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\00_EdgardHernandezYuminMartinez_AA2_1\\FileRead.cpp",
               "RelativeDocumentMoniker": "00_EdgardHernandezYuminMartinez_AA2_1\\FileRead.cpp",

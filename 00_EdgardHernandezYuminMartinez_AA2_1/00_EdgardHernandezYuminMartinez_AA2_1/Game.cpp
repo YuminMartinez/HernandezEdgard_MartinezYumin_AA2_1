@@ -34,6 +34,7 @@ void Game::Menu()
         if (GetAsyncKeyState(VK_SPACE) && menuOption == 0)
         {
             startGame = true;
+            
 			IsDead = false;
         }
         else if (GetAsyncKeyState(VK_SPACE) && menuOption == 1)
@@ -191,7 +192,7 @@ void Game::PlayerInPut()
 
 
                 // Verificar si hay un NPC en la posición de ataque
-                if (targetX >= 0 && targetX < m_map.getFilas() && targetY >= 0 && targetY < m_map.getColumnas() && m_map.m_Type[targetX][targetY] == objectType::NPC)
+                if (targetX >= 0 && targetX < m_map.getFilas() && targetY >= 0 && targetY < m_map.getColumnas() && (m_map.m_Type[targetX][targetY] == objectType::NPC|| m_map.m_Type[targetX][targetY] == objectType::BIGSMOKE))
                 {
                     // 1. Eliminar el NPC del array
                     for (int i = 0; i < m_NPC.getNPC(); i++)
@@ -205,6 +206,11 @@ void Game::PlayerInPut()
                             }
                             break;
                         }
+                    }
+                    if (m_map.m_Type[targetX][targetY] == objectType::BIGSMOKE)
+                    {
+						m_NPC.BsDamage(m_player.getPower());
+						
                     }
                     
                 }
@@ -252,52 +258,47 @@ void Game::PrintMap() const
             if (mapY >= 0 && mapY < m_map.getFilas() && mapX >= 0 && mapX < m_map.getColumnas())
             {
                 // Marcar al jugador con un símbolo especial (@)
-                if (mapY == m_player.getPosX() && mapX == m_player.getPosY())
-                {
+                
                     switch (m_map.m_Type[mapY][mapX])
                     {
-                    case objectType::PLAYER_UP:
-                        std::cout << "^";
-                        break;
-                    case objectType::PLAYER_DOWN:
-                        std::cout << "v";
-                        break;
-                    case objectType::PLAYER_LEFT:
-                        std::cout << "<";
-                        break;
-                    case objectType::PLAYER_RIGHT:
-                        std::cout << ">";
-                        break;
+                        case objectType::LIMIT: 
+                            std::cout << "X"; 
+                            break;
+                        case objectType::PLAYER_UP:
+                            std::cout << "^"; 
+                            break;
+                        case objectType::PLAYER_DOWN:
+                            std::cout << "v"; 
+                            break;
+                        case objectType::PLAYER_LEFT: 
+                            std::cout << "<"; 
+                            break;
+                        case objectType::PLAYER_RIGHT: 
+                            std::cout << ">"; 
+                            break;
+                        case objectType::NPC: 
+                            std::cout << "P"; 
+                            break;
+                        case objectType::MONEY: 
+                            std::cout << "$"; 
+                            break;
+                        case objectType::CAR: 
+                            std::cout << "C"; 
+                            break;
+                        case objectType::BIGSMOKE: 
+                            std::cout << "B"; 
+                            break;
+                        case objectType::DEFAULT: 
+                            std::cout << " ";
+                            break;
+                        case objectType::PEAJE:
+                            std::cout << " "; 
+                            break;
+                        default: 
+                            std::cout << "?";
+                            break;
                     }
-                }
-                else
-                {
-                    // Renderizar según el tipo de objeto en esa posición
-                    switch (m_map.m_Type[mapY][mapX])
-                    {
-                    case objectType::LIMIT:
-                        std::cout << "X";
-                        break;
-                    case objectType::NPC:
-                        std::cout << "P";
-                        break;
-                    case objectType::MONEY:
-                        std::cout << "$";
-                        break;
-                    case objectType::CAR:
-                        std::cout << "C";
-                        break;
-                    case objectType::DEFAULT:
-                        std::cout << " ";
-                        break;
-                    case objectType::PEAJE:
-                        std::cout << "T";
-                        break;
-                    default:
-                        std::cout << "?";
-                        break;
-                    }
-                }
+                
             }
         }
         std::cout << '\n';  // Nueva línea por cada fila del mapa
@@ -309,9 +310,10 @@ void Game::PrintMap() const
     std::cout << "\nMapa: " << m_map.getColumnas() << "x" << m_map.getFilas();
     std::cout << "\nDinero: " << m_player.getMoney() << "$";
 	std::cout << "\nVidaCJ: " << m_player.getLife() << std::endl;
+	
     
     
-   /* for (int i = 0; i < m_map.getFilas(); ++i) {
+    /*for (int i = 0; i < m_map.getFilas(); ++i) {
         for (int j = 0; j < m_map.getColumnas(); ++j) {
             switch (m_map.m_Type[i][j]) {
             case objectType::LIMIT: std::cout << "X"; break;
@@ -322,6 +324,7 @@ void Game::PrintMap() const
             case objectType::NPC: std::cout << "P"; break;
             case objectType::MONEY: std::cout << "$"; break;
             case objectType::CAR: std::cout << "C"; break;
+			case objectType::BIGSMOKE: std::cout << "B"; break;
             case objectType::DEFAULT: std::cout << " "; break;
             case objectType::PEAJE: std::cout << " "; break;
             default: std::cout << "?"; break;
@@ -408,10 +411,79 @@ void Game::CreateNPC()
         }
         std::cout << "NPC " << i << " creado en (" << m_NPC.npc_PosX[i] << ", " << m_NPC.npc_PosY[i] << ")" << " Vida: " << m_NPC.npc_Life[i] << " Poder: " << m_NPC.npc_Power[i] << std::endl;
     }
+    do
+    {
+        m_NPC.bs_PosX = numRandom(1, m_map.getFilas() - 1);
+        m_NPC.bs_PosY = numRandom(m_map.getLimitSanFierro() + 1, m_map.getColumnas() - 1);
+    } while (m_map.m_Type[m_NPC.bs_PosX][m_NPC.bs_PosY] != objectType::DEFAULT);
+	m_NPC.ResetBs();
+    m_map.m_Type[m_NPC.bs_PosX][m_NPC.bs_PosY] = objectType::BIGSMOKE;// Asegura que solo spawnean en un lugar donde este vacio
 }
 void Game::NPCMoviment()
 {
-    
+	// Mueve a Big Smoke
+    if (m_NPC.bsAlife == true)
+    {
+		bool playerInRangeBS = false;
+		for (int i = -1; i <= 1; i++)
+		{
+			for (int j = -1; j <= 1; j++)
+			{
+				int checkPosX = m_player.getPosX() + i;
+				int checkPosY = m_player.getPosY() + j;
+				if (checkPosX == m_NPC.bs_PosX && checkPosY == m_NPC.bs_PosY)
+				{
+					playerInRangeBS = true;
+                    break;
+				}
+			}
+		}
+		if (!playerInRangeBS)
+		{
+			bool moved = false;
+			int intentos = 0;
+			while (!moved && intentos < 10)
+			{
+				int newX = m_NPC.bs_PosX;
+				int newY = m_NPC.bs_PosY;
+				int randomMoviment = numRandom(1, 4);
+				switch (randomMoviment)
+				{
+				case 1: // Arriba
+					newX--;
+					break;
+				case 2: // Abajo
+					newX++;
+					break;
+				case 3: // Izquierda
+					newY--;
+					break;
+				case 4: // Derecha
+					newY++;
+					break;
+				}
+				int limiteX = m_map.getFilas() - 1;
+				int limiteY = m_map.getColumnas() - 1;
+				// Verifica que la posición nueva esté dentro del mapa
+				if (newX >= 0 && newX < limiteX && newY >= 0 && newY < limiteY)
+				{
+					// Verifica que la casilla esté vacía
+					if (m_map.m_Type[newX][newY] == objectType::DEFAULT)
+					{
+						// Libera la casilla anterior
+						m_map.m_Type[m_NPC.bs_PosX][m_NPC.bs_PosY] = objectType::DEFAULT;
+						// Actualiza posición
+						m_NPC.bs_PosX = newX;
+						m_NPC.bs_PosY = newY;
+						// Marca la casilla como Big Smoke
+						m_map.m_Type[newX][newY] = objectType::BIGSMOKE;
+						moved = true;
+					}
+				}
+				intentos++;
+			}
+		}
+    }
         for (int p = 0; p < m_NPC.getNPC(); p++)
         {
             if (m_NPC.npc_Alive[p] == true)
@@ -531,8 +603,29 @@ void Game::AttackNPC()
                 }
             }
         }
+		if(m_NPC.bsAttacked == true)
+		{
+			m_player.RecieveDamage(m_NPC.getBSPower());
+		}
 }
-
+void Game::ResetGame()
+{
+	for (int i = 0; i < m_NPC.getNPC(); i++)
+	{
+		m_map.m_Type[m_NPC.npc_PosX[i]][m_NPC.npc_PosY[i]] = objectType::DEFAULT;
+		m_NPC.npc_Alive[i] = false;
+		m_NPC.npc_Attacked[i] = false;
+	}
+	m_map.m_Type[m_NPC.bs_PosX][m_NPC.bs_PosY] = objectType::DEFAULT;
+	m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::DEFAULT;
+    m_player.SetPos(m_fileRead.getFilas() - 1, m_fileRead.getLimitLosSantos() - 1);
+    m_player.ResetLife();
+    SetPlayer();
+    CreateNPC();
+    
+    startGame = false;
+	
+}
 Game::~Game()
 {
 
