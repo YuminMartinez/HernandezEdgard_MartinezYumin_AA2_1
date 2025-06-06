@@ -31,6 +31,11 @@ void Game::Menu()
             std::cout << "1. Play" << std::endl;
             std::cout << "2. Exit <--" << std::endl;
         }
+        else
+        {
+			std::cout << "1. Play" << std::endl;
+			std::cout << "2. Exit" << std::endl;
+        }
         if (GetAsyncKeyState(VK_SPACE) && menuOption == 0)
         {
             startGame = true;
@@ -364,7 +369,7 @@ void Game::CreateNPC()
         {
             m_NPC.npc_neutral[i] = false;
         }
-		std::cout << "NPC " << i << " creado en (" << m_NPC.npc_PosX[i] << ", " << m_NPC.npc_PosY[i] << ")" << " Vida: " << m_NPC.npc_Life[i] << " Poder: " << m_NPC.npc_Power[i]<< std::endl;
+		
     }
     for (int i = m_NPC.getNpcLosSantos(); i < (m_NPC.getNpcLosSantos() + m_NPC.getNpcSanFierro()); i++)
     {
@@ -387,7 +392,7 @@ void Game::CreateNPC()
         {
             m_NPC.npc_neutral[i] = false;
         }
-        std::cout << "NPC " << i << " creado en (" << m_NPC.npc_PosX[i] << ", " << m_NPC.npc_PosY[i] << ")" << " Vida: " << m_NPC.npc_Life[i] << " Poder: " << m_NPC.npc_Power[i] << std::endl;
+        
     }
     for (int i = m_NPC.getNpcLosSantos() + m_NPC.getNpcSanFierro(); i < (m_NPC.getNpcLosSantos() + m_NPC.getNpcSanFierro() + m_NPC.getNpcLasVenturas()); i++)
     {
@@ -409,7 +414,7 @@ void Game::CreateNPC()
         {
             m_NPC.npc_neutral[i] = false;
         }
-        std::cout << "NPC " << i << " creado en (" << m_NPC.npc_PosX[i] << ", " << m_NPC.npc_PosY[i] << ")" << " Vida: " << m_NPC.npc_Life[i] << " Poder: " << m_NPC.npc_Power[i] << std::endl;
+        
     }
     do
     {
@@ -618,12 +623,12 @@ void Game::ResetGame()
 	}
 	m_map.m_Type[m_NPC.bs_PosX][m_NPC.bs_PosY] = objectType::DEFAULT;
 	m_map.m_Type[m_player.getPosX()][m_player.getPosY()] = objectType::DEFAULT;
-    m_player.SetPos(m_fileRead.getFilas() - 1, m_fileRead.getLimitLosSantos() - 1);
+    m_player.SetPos(m_fileRead.getFilas() - 1,m_fileRead.getLimitLosSantos() - 1);
     m_player.ResetLife();
     SetPlayer();
     CreateNPC();
-    
     startGame = false;
+	menuOption = -1;
 	
 }
 Game::~Game()

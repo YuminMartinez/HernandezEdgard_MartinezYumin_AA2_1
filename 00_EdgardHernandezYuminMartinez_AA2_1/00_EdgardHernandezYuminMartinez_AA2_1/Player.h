@@ -48,6 +48,7 @@ public:
 	{
 		return cjDead;
 	}
+	
 	void StatsCJ(int, int);
 	//Setterss
 	void addMoney(int amount) {
@@ -68,7 +69,9 @@ public:
 
 	void ResetLife()
 	{
-		life = 100; // Valor inicial de vida
+		life = 100; 
+		cjDead = false; 
+		money = 0;
 	}
 	void moveForward();
 	void moveLeft();
